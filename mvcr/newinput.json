@@ -1,0 +1,20 @@
+{
+ 	"jurisdiction" : "US",
+ 	"iat": 1443282118,
+ 	"moc": "web form",
+ 	"iss": "http://www.consentreceipt.org/",
+ 	"jti": "cba37edd4e223a44ea0197498663af81c0d68cdf7b5f13975096e34435339e51f86b6bf674f9725632b6f451b4a78c2fb09d3fcd38c978f004fcf99e65bdceab",
+ 	"sub" : "example@example.com" ,
+
+ 	"data_controller" : {"on_behalf": true, "contact": "Dave Controller", "company": "Data Controller Inc.", "address": "123 St., Place", "email": "dave@datacontroller.com", "phone": "00-123-341-2351"},
+ 	"policy_uri" : "http://example.com/privacy" ,
+
+ 	"purpose" : [["Bob's Store", "delivery", "financial"]],
+
+	"sensitive" : ["health"] ,
+
+	"sharing" : {sharing:"financial",party_name:"demographic", purpose: "delivery"},
+
+	"notice" : "http://example.com/shortnotice" ,
+	"scopes" : "read update"
+}
