@@ -1,0 +1,3 @@
+[submodule "wp-consent-receipt"]
+	path = wp-consent-receipt
+	url = https://github.com/OliverMaerz/wp-consent-receipt
