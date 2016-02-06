@@ -9,7 +9,7 @@ The core Consent Receipt (CR) specification refers to the legal notices required
 
 # Status
 
-The 0.7 version of this specification documents the *minimum* required and offers an alpha format for testing and implementation.  This version of the specification is intentionally as flexible as possible in order to accomadate the widest range of use cases for implementation.  Some fields are under review for inclusion in the next version of the specification.
+The 0.7.1 version of this specification documents the *minimum* required and offers an alpha format for testing and implementation.  This version of the specification is intentionally as flexible as possible in order to accomadate the widest range of use cases for implementation.  Some fields are under review for inclusion in the next version of the specification.
 
 # Editors
 
@@ -29,9 +29,9 @@ Kantara Initiative (KI) is a non-profit membership organization that connects bu
 
 # Introduction
 
-The Minimum Viable Consent Receipt (MVCR) is a simple specification that describes a few basic elements common to consent across several legal jurisdictions and across a variety of contexts.  The term 'Minimum' in the MVCR refers to the least amount of fields to make a consent receipt viable.  Viable, in this context, means to use the consent receipt independently of the issuer. The consent receipt SHOULD involve the minimal set of  notice requirements for the company or organization issuing the receipt.
+The Minimum Viable Consent Receipt (MVCR) is a simple specification that describes the few basic elements common to consent across several legal jurisdictions and across a variety of contexts.  The term 'Minimum' in the MVCR refers to the least amount of fields to make a consent receipt viable.  Viable, in this context, means to present a consent record independently of the issuer. The consent receipt SHOULD involve the minimal set of  notice requirements for the company or organization issuing the receipt to provide proof of consent.
 
-The fields in this v0.7 specification are the Alpha MVCR fields that the CISWG will use to implement and test the consent receipt.
+The fields in this v0.7.1 specification are the Alpha MVCR fields that the CISWG will use to implement and test the consent receipt.
 
 # Notational Conventions
 
@@ -76,7 +76,7 @@ There is no common consent record format, people do not get a record of consent 
 The impact is that people are expected to log in to each service provider separately and to manage consent and their data seperately with each provider.  =  
 
 ## Cost, Regulation & Usability
-Consent management is very costly to manage for all stakeholders,  difficult to regulate, and unusable for people at scale. The scale of information sharing however, continues to grow at a phenomenal rate,  with 90% of all data in the world  being generated in the last two years.  
+Consent management is very costly to manage for all stakeholders,  difficult to regulate, and unusable for people at scale. The scale of information sharing however, continues to grow at a phenomenal rate.  
 
 ## Consent is Not Scalable
 
@@ -87,19 +87,13 @@ This is compounded by each organization posting their policies in different loca
 # The Solution
 The solution is an 'open consent' model that provides people with a simple, standardized, easy-to-read consent record.  The act of providing a consent record itself demonstrates the capacity for compliance and builds trust with the management of personal data.  
 
-A common consent receipt format can be used as the first layer in layering privacy policy and it can be used to communicate about consent after the point at which it is provided.  By its use alon it builds reputations viewable before entering into the service.
-
-This transparency makes consent more usable as it provides the means for people and CRM systems to evolve towards greater personal data control in line with regulation and context.
+A common consent receipt format can be used as the first layer in layering privacy policy and it can be used to communicate a consent notice at the point at which it is provided.
 
 
 # Scope
-CISWG: Internal Spec revision: This next iteration of  the MVCR specification is the Alpha: Minimum core requirements for a legitimate consent to be viable independently.
-
-Core use is to make a standard way to communicate about fine grained consent and contexts, using policy, between DS and DC.  
-
-The Minimum Viable Consent Receipt (MVCR) specification as the core fields required for creating a legitimate digital consent that can be used to bind frameworks, roles and required data controls, to a consent transaction.
-
 The scope of the MVCR is limited to defining the minimum consent fields for an explicit consent. With the transparent aim to standardize the minimum fields to create a common receipt meta-format defined here and called a ‘consent receipt’ (CR).
+
+Core use is to make a standard way to communicate about fine grained consent and contexts, using policy, between Data Subject and PII Controller. 
 
 # MVCR: Core Profile
 
