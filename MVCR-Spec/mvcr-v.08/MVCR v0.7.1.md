@@ -1,4 +1,4 @@
-# MVCR-v0.7
+# MVCR-v0.7.1
 ## Minimum Viable Consent Receipt - Core MVCR Receipt Profile
 
 # Abstract
@@ -42,12 +42,10 @@ DS - Data Subject
 MVCR - Minimum Viable Consent Receipt
 PI - Personal Information
 
-
 # Terminology (TBF v0.8)
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
 document are to be interpreted as described in RFC 2119 [http://www.rfc-editor.org/info/rfc2119].
-
 
 Privacy and Consent Terminology are mapped to the ISO 29100 which provides a basis for privacy standardizations for:
 - technical reference architectures;
@@ -79,34 +77,33 @@ The impact is that people are expected to log in to each service provider separa
 Consent management is very costly to manage for all stakeholders,  difficult to regulate, and unusable for people at scale. The scale of information sharing however, continues to grow at a phenomenal rate.  
 
 ## Consent is Not Scalable
-
 As described above, there is no common consent record format and no standard practive  to bind trust frameworks to a service users consent.  
 
 This is compounded by each organization posting their policies in different locations, using different trust frameworks, different technology and using different practices.   
 
 # The Solution
-The solution is an 'open consent' model that provides people with a simple, standardized, easy-to-read consent record.  The act of providing a consent record itself demonstrates the capacity for compliance and builds trust with the management of personal data.  
+The solution is an 'open consent' model that provides people with a simple, standardized, easy-to-read consent reciept.  The act of providing a consent record itself demonstrates the capacity for compliance and builds trust with the management of personal data.  
 
-A common consent receipt format can be used as the first layer in layering privacy policy and it can be used to communicate a consent notice at the point at which it is provided.
-
+A common consent receipt format can be used as the first layer in layering privacy policy and it can be used to communicate a consent notice at the point at which consent is provided.
 
 # Scope
+This specificiation is for companies or individuals who want to provide a higher standard of notice and consent.
 The scope of the MVCR is limited to defining the minimum consent fields for an explicit consent. With the transparent aim to standardize the minimum fields to create a common receipt meta-format defined here and called a ‘consent receipt’ (CR).
 
-Core use is to make a standard way to communicate about fine grained consent and contexts, using policy, between Data Subject and PII Controller. 
+Core use is to make a standard way to communicate about fine grained consent and contexts, using policy, between Data Subject and PII Controller.  
+
 
 # MVCR: Core Profile
 
-## Design Principles (TBD v0.8)
-
-## Functional Objective (TBF v0.8)
+## Functional Objective 
+To create a common receipt format for consent. 
 
 ## 5 Sections
 The MVCR is broken down into 5 sections for usability and to aid in understanding the core function. The 5 sections are:
 1. Header
 2. Data Controller Contact & Policy
 3. Purpose Specification
-4. Personal Information
+4. Personally Identifiable Information
 5. Information Sharing
 
 The order is specific and is part of the specification. 
@@ -116,7 +113,6 @@ The purpose of this section is to set out the meta-data for the consent transact
 
 ### PII Controller, Contact & Policy
 The purpose of this section is to identify the entity that is accountable for data protection and the privacy policy which the consent is bound by.
-
 
 ### Purpose Specification
 The purpose of this section is to list the 
@@ -132,7 +128,7 @@ Split into two types:
 A) PI (SHOULD include the data captured at the point of consent, MUST include the categories of PI that the Data Controller or (person installing consent button), defines when creating the consent receipt button (e.g., IP Address, DNT Header))
 (ref: )
 
-B) Sensitive PI (a category of PI, with a yes/no indicator) defined by the creator of the consent receipt button.
+B) Sensitive PII (a category of PI, with a yes/no indicator) defined by the creator of the consent receipt button.
 
 These categories have legal notice and consent requirements in some jurisdictions that are beyond the scope of the MVCR format, but are required to be flagged in various jurisdictions and context.  
 
@@ -152,98 +148,24 @@ In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd part
 
 (Note: TBD In v0.8 binding roles and policy, contact for information sharing should be here and a reference to Terms & Conditions, which is an additional consent/contrct that is downstream can also be linked into a 'infomration sharing specification'.  (similar to the structure of a purpose specification)
 
-## Fields in Review v0.8:
-In order to create v0.7 much has been cut to the minimum, this includes some feild that are in review, these are
+## Optional Fields
+(create table where optional fields should go in specification)
 
- * Review consent transaction data
- * Review consent context
- * Review - Link to short privacy notice
- * Review consent payload
- * Review Resource Server Identifier
- * Review OAuth Scopes
- * Review and what is —> Audience URI
- * Consent Location
-
-### Use cases
-
-The use cases are currently active, the use case status page can be found at the Kantara CIS Wiki Page. 
+ * Data Retention  
+ * Withdraw consent link
+ * Link to short privacy notice
+ * UMA - Review Resource Server Identifier
+ * UMA - Review OAuth Scopes
 
 
-## Consent Receipt Generation
-
-#  Two Party Consent Receipts
-        Two Party is a simple version of generating a  consent receipt,
-            Two party example for a general website use case:
-                Found Here https://kantarainitiative.org/confluence/x/ToVtB -
-            Note: Other Ways to Generate a consent receipt:
-                Text: document with a consent receipt form in it, or
-                a consent scrape by the user with a browser plugin,
-                a consent receipt request from the person to the company by email.
-                Consent Receipt From Record i.e. an email box scrape
-                Consent Receipt with API hosted by consent collector
-# 3rd Party Consent Receipt
-        Consent Receipt Generator:
-            CISWG has setup a Kantara funded example  at http://api.consentreceipt.org/ for developing and playing with use cases.  On this page there is a form that uses the api  to render and make downloadable as JWT a Consent Receipt in the web page.  This is an example of a third party issuance of a consent receipt. (note see legal considerations)
-
-## Implementation Use Cases
-
-### Join Form Can Be Found here (https://kantarainitiative.org/signup/) select CISWG to get the consent receipt as an option to joining the work group. (note: there is also an option to check if the receipt is for test purposes)
-
-This is the CIS WG implementation for joining the work group.  (dog food in progress)
-
-####  Consent Receipt.Org Website (TBD v0.8 http://www.consentreceipt.org)
-This is a landing page for the consent receipt that will increase access to the CR work. 
-
-### Proposed CIS-Use Case  for MVCR (TBD v0.8)
-
-Create a  Consent Receipt Button Generator for website implementation, as well as a receipt template for the MVCR v0.7. 
-
-### Field Description Table: Field, Logic, JWT Claim
+### Field Description Table: Field, Logic, 
 
 Current table can be found at : https://kantarainitiative.org/confluence/display/infosharing/MVCR%3A+Core+Consent+Receipt+Profile+v0.7
 This is actively being develiped in the Consent & Infomration sharing WG, which can be found at https://kantarainitiative.org/confluence/display/infosharing/Home
                         |
 
-### Consent Receipt Generator (CRG)
 
-A prototype for generating a consent receipt with the MVCR API can be found at (Note: This is not a prototype of the MVCR v0.7, but a strawman)
-
-http://api.consentreceipt.org/
-
-This example site consists of two pages
-1. for the Consent Receipt Generator Input Example and Receipt Rendering, this is used to play with inputs and to see their output. This is used to help develop implementations and see how the consent receipt (GitHub repository) code is working.
-
-The github repository for this code is
---> https://github.com/bspk/cr_web
-
-2. for API Documentation and examples, these can be found at
-http://api.consentreceipt.org/doc/
-
-### Consent Receipt Generator API
-This server provides a consent receipt generation API. The API consists of a single endpoint:
-
-http://www.consentreceipt.org/mvcr/api
-
-This endpoint accepts HTTP POST requests with input in the form of JSON (application/json) documents and output in the form of a signed JSON Web Token (application/jwt).
-
-## How It Works
-
-The API takes in a JSON document describing the consent transaction for which the receipt is to be generated. This object includes artifacts such as the presiding jurisdiction for the consent action, an identifier for the party consenting. The output of the API is a signed JSON Web Token (JWT) whose payload consists of all of the input data as well as several additional fields. This JWT is digitally signed by the server.
-
-## Digital Signature Information
-The output JWT is signed using the RS256 algorithm defined in JSON Web Signatures. The server's public key is published in JSON Web Key format at:
-
-http://www.consentreceipt.org/api
-
-## Example
-
-An example input to the API is the following JSON object:
-
-The latest documentation for example input can be found at
-http://www.consentreceipt.org/api
-(Note: At the moment 1-Aug-2015 It is out of sync with this v0.7 of the specification, when it is in sync it should be pasted here)
-
-# References [TBD v0.9] and Further Reading
+# References [TBD v0.8] and Further Reading
 
 
 [AQ: The References section will need to be restructured to link to specific citation points in the text. Should that be done for 0.7 or at a later version of the draft?]
@@ -327,3 +249,55 @@ Supporting reference to ISTPA: Analysis of privacy principles:
 - 14.	Membership – (Political, trade union affiliations, any other opt-in organisational/group membership data - third party organisations only. Includes name of employer when not held by employer. Could extend to online platform membership.  Some might be more sensitive than others – may want a separate category)
 - 15.	Behavioural – (Any data about the behaviour, habits or movements of an individual - electronic or physical. Location, browser/search history, web page usage (analytics), energy usage (smart meters), login history, calendar data, etc.)
 - 16.	Profile – (Marketing and social segmentation data.  Any categorisation that impacts information presented or decisions made about an individual. This might be observed or derived data (algorithmic) or volunteered by the individual. Profile data is often generated from Behavioural data).
+- 
+
+#Appedix C: Parking Lot
+
+
+#Appendix D: Technical Implementation JSON 
+
+List fields and JWT from api.consentreceipt.org/doc (put those in here)  
+
+
+### Consent Receipt Generator (CRG)
+
+A prototype for generating a consent receipt with the MVCR API can be found at (Note: This is not a prototype of the MVCR v0.7, but a strawman)
+
+http://api.consentreceipt.org/
+
+This example site consists of two pages
+1. for the Consent Receipt Generator Input Example and Receipt Rendering, this is used to play with inputs and to see their output. This is used to help develop implementations and see how the consent receipt (GitHub repository) code is working.
+
+The github repository for this code is
+--> https://github.com/bspk/cr_web
+
+2. for API Documentation and examples, these can be found at
+http://api.consentreceipt.org/doc/
+
+### Consent Receipt Generator API
+This server provides a consent receipt generation API. The API consists of a single endpoint:
+
+http://www.consentreceipt.org/mvcr/api
+
+This endpoint accepts HTTP POST requests with input in the form of JSON (application/json) documents and output in the form of a signed JSON Web Token (application/jwt).
+
+## How It Works
+
+The API takes in a JSON document describing the consent transaction for which the receipt is to be generated. This object includes artifacts such as the presiding jurisdiction for the consent action, an identifier for the party consenting. The output of the API is a signed JSON Web Token (JWT) whose payload consists of all of the input data as well as several additional fields. This JWT is digitally signed by the server.
+
+## Digital Signature Information
+The output JWT is signed using the RS256 algorithm defined in JSON Web Signatures. The server's public key is published in JSON Web Key format at:
+
+http://www.consentreceipt.org/api
+
+## Example
+
+An example input to the API is the following JSON object:
+
+The latest documentation for example input can be found at
+http://www.consentreceipt.org/api
+(Note: At the moment 1-Aug-2015 It is out of sync with this v0.7 of the specification, when it is in sync it should be pasted here)
+
+
+
+
