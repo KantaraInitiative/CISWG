@@ -250,7 +250,7 @@ Supporting reference to ISTPA: Analysis of privacy principles:
 - 16.	Profile – (Marketing and social segmentation data.  Any categorisation that impacts information presented or decisions made about an individual. This might be observed or derived data (algorithmic) or volunteered by the individual. Profile data is often generated from Behavioural data).
 - 
 
-#Appedix C: Parking Lot
+#Appendix C: Parking Lot
 - Updating MVCR - Receipt specifiation to a record of consent that encapsulates the life time of consent 
 - Creating a record spec for updating a consent record with just a transaction receipt - this would be an interative update to the specification 
 - creating a legal reference table for the required fields in the specification to different jurisdictional requirements, the aim of which is to build towards a cross jurisdictional framework of consent. 
@@ -260,7 +260,7 @@ Supporting reference to ISTPA: Analysis of privacy principles:
 List fields and JWT from api.consentreceipt.org/doc (put those in here)  
 
 
-### Consent Receipt Generator (CRG)
+## Consent Receipt Generator (CRG)
 
 A prototype for generating a consent receipt with the MVCR API can be found at (Note: This is not a prototype of the MVCR v0.7, but a strawman)
 
