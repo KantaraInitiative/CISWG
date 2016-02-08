@@ -16,7 +16,6 @@ The 0.7.1 version of this specification documents the *minimum* required and off
 Mark Lizar
 Heather Flanagan
 
-
 ## Intellectual Property Rights
 
 This document is being developed by Kantara Initiative's Consent and Information Sharing Working Group (see <https://kantarainitiative.org/groups/ciswg/>). Participation in this group is free and open, and all work contributed to the effort falls into the Reciprocal Royalty Free with Opt-Out to Reasonable And Non discriminatory (RAND) IPR policy <https://kantarainitiative.org/confluence/x/mQByAg>.
@@ -252,7 +251,9 @@ Supporting reference to ISTPA: Analysis of privacy principles:
 - 
 
 #Appedix C: Parking Lot
-
+- Updating MVCR - Receipt specifiation to a record of consent that encapsulates the life time of consent 
+- Creating a record spec for updating a consent record with just a transaction receipt - this would be an interative update to the specification 
+- creating a legal reference table for the required fields in the specification to different jurisdictional requirements, the aim of which is to build towards a cross jurisdictional framework of consent. 
 
 #Appendix D: Technical Implementation JSON 
 
