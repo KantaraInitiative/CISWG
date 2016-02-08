@@ -1,0 +1,19 @@
+### Use cases
+
+The use cases are currently active, the use case status page can be found at the Kantara CIS Wiki Page. 
+
+## Consent Receipt Generation
+
+#  Two Party Consent Receipts - 
+        Two Party is a simple version of generating a  consent receipt,
+            Two party example for a general website use case:
+                Found Here https://kantarainitiative.org/confluence/x/ToVtB -
+            Note: Other Ways to Generate a consent receipt:
+                Text: document with a consent receipt form in it, or
+                a consent scrape by the user with a browser plugin,
+                a consent receipt request from the person to the company by email.
+                Consent Receipt From Record i.e. an email box scrape
+                Consent Receipt with API hosted by consent collector
+# 3rd Party Consent Receipt
+        Consent Receipt Generator:
+            CISWG has setup a Kantara funded example  at http://api.consentreceipt.org/ for developing and playing with use cases.  On this page there is a form that uses the api  to render and make downloadable as JWT a Consent Receipt in the web page.  This is an example of a third party issuance of a consent receipt. (note see legal considerations)
