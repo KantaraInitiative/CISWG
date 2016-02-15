@@ -151,7 +151,7 @@ The order is specific and is part of the specification.
 The purpose of this section is to set out the meta-data for the consent transaction. This section will contain the following fields:
 
 | Field Name | Description | Type | Notes |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | Jurisdiction | The legal jurisdiction that the PII controller will apply to this collection of PII | Required | Typically should be an ISO two letter country code |
 | Consent Time Stamp | The time and date that the consent receipt was issued | Required | Date and time including time zone, or in UTC |
 | Consent Type | Implied or Expressed Consent (or N/A in the case where collection is a legal requirement) | Required | **Note 1:** If collection is required by law, consent should not be sought except for other purposes, since consent is only meaningfull if the PII Subject may say no. **Note 2:** If the PII is sensitive (below) and consent is required for collection, expressed consent will be required in many jurisdictions |
@@ -178,7 +178,7 @@ The purpose of this section is to set out the meta-data for the consent transact
 The purpose of this section is to identify the entity that is accountable for data protection and the privacy policy tp which the consent is bound.
 
 | Field Name | Description | Type | Notes |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | Data Controller | That entity that is accountable for compliance over the PII | Required | Typically the entity that owns the web site that the is issuing the consent receipt |
 | Data Processor | The entity that has collected the PII | Optional | When the site operator is acting on behalf of the Data Controller |
 | Contact Name| The person/role to contact for privacy issues | Required | |
@@ -206,7 +206,7 @@ The purpose of this section is to identify the entity that is accountable for da
 The purpose of this section is to identify the primary purpose(s) for which the PII Controller is collecting PII, along with any secondary purposes for which the PII might be collected.
 
 | Field Name | Description | Type | Notes |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | | | | Repeat the following set of fields as many times as necessary to set out the purpose(s) for collection |
 | Service | Site, app, or service | Required | Name of the site, the app or the service that will use the PII collected |
 | Purpose | Description of purpose | Required | Should be explicit and specific as reasonably necessary to fulfill the Service |
@@ -237,7 +237,7 @@ The purpose of this section is to identify the primary purpose(s) for which the 
 The purpose of this section is to ensure that the PII Subject is made aware of the types of PII that has been collected and may be used or disclosed.
 
 | Field Name | Description | Type | Notes |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | | | | Repeat the following set of fields as many times as necessary to set out the types of PII |
 | Category | Label for a type of data that may be collected | Required |  |
 | PII | Short description of the category | Required |  |
@@ -261,7 +261,7 @@ The example below is for an on-line pharmacy that provides a delivery service
 The purpose of this section is to provide the PII Subject with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties, the specified purpose and at the minimum the data categories shared may be listed here.
 
 | Field Name | Description | Type | Notes |
-| --- | --- | --- |
+| --- | --- | --- | --- |
 | | | | Repeat the following set of fields as many times as necessary identify third parties |
 | Sharing | Category(ies) of data shared | Required |  |
 | Third Party | Third party that receives the data | Required | SHOULD be specific, MAY be generic |
