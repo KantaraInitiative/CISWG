@@ -2,8 +2,8 @@
 
 | Document Information | |
 | ------	| ------	|
-| Version: | 1.0 Draft 0.7.1 |
-| Date: | February 14, 2016 |
+| Version: | 1.0 Draft 0.8 |
+| Date: | March 6, 2016 |
 | Editors: | Mark Lizar |
 | | Heather Flanagan |
 | Contributors: |	Iain Henderson |
