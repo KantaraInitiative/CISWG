@@ -1,0 +1,719 @@
+<!doctype html>
+<!--[if lt IE 7]>   <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>      <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>      <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Consent Receipt Generator</title>
+      <meta name="description" content="Demonstration website for a consent receipt generation service">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <link rel="stylesheet" href="../css/bootstrap.min.css">
+      <style>
+          body {
+              padding-bottom: 20px;
+          }
+       #sig {
+         padding: 15px;
+         border: 1px #cccccc solid;
+       }
+      </style>
+      <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="../css/main.css">
+     <script type="text/javascript">
+     var exports = {};
+     </script>
+
+      <script src="../js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+      <script src="../js/vendor/jsrsasign.js"></script>
+
+     
+  </head>
+  <body>
+
+  <nav class="navbar navbar-inverse" role="navigation">
+   <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode"></span> Consent Receipt Generator</a>
+		  </div>
+	    <div class="collapse navbar-collapse">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="/doc/">API Documentation</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+
+	</div>
+
+  </nav>
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Consent Receipt API</h1>
+        <p>This server provides a consent receipt generation API. The API consists of a single endpoint:</p>
+        <p><code>http://mvcr.herokuapp.com/api/</code></p>
+        <p>This endpoint accepts HTTP <code>POST</code> requests with <a href="#input-object">input</a> in the form of JSON (<code>application/json</code>) documents and <a href="#output-fields">output</a> in the form of a <a href="#signature">signed</a> JSON Web Token (<code>application/jwt</code>).</p>
+      </div>
+    </div>
+
+    <div class="container">
+
+<div class="row">
+
+  <div class="col-md-10">
+    <div class="well">
+      <h2>How It Works</h2>
+      <p>The API <a href="#input-object">takes in a JSON document</a> describing the consent transaction for which the receipt is to be generated. This object includes artifacts such as the presiding jurisdiction for the consent action, an identifier for the party consenting. The output of the API is a signed JSON Web Token (JWT) whose payload consists of all of the input data as well as <a href="#output-fields">several additional fields</a>. This JWT is <a href="#signature">digitally signed</a> by the server.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-10">
+
+<h3 id="input-object">Top-level fields in the input JSON object</h3>
+
+<table class="table table-striped table-hover table-border">
+
+<thead>
+  <tr>
+  <th>Field Name</th>
+    <th>Data Type</th>
+    <th>Description</th>
+    <th>Example Input</th>
+    <th>Required</th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr class="section-header">
+    <td><strong>Section 1: <br>CR Header</strong></td>
+    <td>----</td>
+    <td>This is the first section of the receipt</td>
+    <td>----</td>
+    <td></td>
+  </tr>
+
+
+  <tr>
+    <td><code>jursidiction</code></td>
+    <td>string. ISO two-letter country code if applicable, otherwise free text</td>
+    <td>This is the legal jurisdiction under which the processing of personal data occurs</td>
+    <td><code>US</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr>
+    <td><code>iat</code></td>
+    <td>number. Integer number of seconds since 1970-01-01 00:00:00 GMT</td>
+    <td>Timestamp of when the consent was issued</td>
+    <td><code>1435367226</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr>
+    <td><code>moc</code></td>
+    <td>Method of collection</td>
+    <td>Is used to describe how the consent was collected i.e. webform opt in,  or implicit, verbal, etc. </td>
+    <td><code>web form</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr>
+    <td><code>iss</code></td>
+    <td>string. HTTPS URL</td>
+    <td>This is the URI or Internet location of processing, i.e., one party-two party or three </td>
+    <td><code>http://www.consentreceipt.org/</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr>
+    <td><code>jti</code></td>
+    <td>string.</td>
+    <td>Unique identifier for this consent receipt</td>
+    <td><p style="word-wrap: break-word; overflow-wrap: break-word;"><code>9ef6b81a414b2432ec6e3d384c5a36cea8aa0c30d3dd2b67 364126ed80856f9c20654f032eef87ad981187da8c23c1186eefe 1503714835c2e952bbb3f22729c</code></p></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr>
+    <td><code>sub</code></td>
+    <td>string.</td>
+    <td>Subject provided identifier, email address - or Claim, defined/namespaced</td>
+    <td><code>example@example.com</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+
+  <tr class="section-header">
+      <td><strong>Section 2: <br>Data Controller</strong></td>
+      <td>----------</td>
+      <td>This section has the data controller, contact and privacy service information</td>
+      <td>----------</td>
+      <td></td>
+  </tr>
+
+  <tr>
+    <td><code>data_controller</code></td>
+    <td>object</td>
+    <td>
+      <p>The identity and company of the data controller and any party nominated to be data controller on behalf of org</p>
+      <div class="well">
+          <p>The object contains information of the data controller in the following fields:</p>
+      
+          <table class="table table-condensed table-hover">      
+            <thead>
+              <tr>
+              <th>Field Name</th>
+                <th>Data Type</th>
+                <th>Description</th>
+                <th>Example Input</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <td><code>on_behalf</code></td>
+                <td>boolean.</td>
+                <td>acting on behalf of an organization?</td>
+                <td><code>true</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>contact</code></td>
+                <td>string.</td>
+                <td>person to contact</td>
+                <td><code>Jon Doe</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>company</code></td>
+                <td>string.</td>
+                <td>company name</td>
+                <td><code>Data Controller Inc.</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>address</code></td>
+                <td>string.</td>
+                <td>physical address</td>
+                <td><code>123 Main St., Anywhere</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>email</code></td>
+                <td>string. Email address</td>
+                <td>contact email address</td>
+                <td><code>jon@datacontroller.com</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>phone</code></td>
+                <td>string. Phone number</td>
+                <td>contact phone number</td>
+                <td><code>00-000-000-0000</code></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </td>
+    <td><code>{"on_behalf": true, "contact": "Dave Controller", "company": "Data Controller Inc.", "address": "123 St., Place", "email": "dave@datacontroller.com", "phone": "00-123-341-2351"}</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr>
+      <td><code>policy_uri</code></td>
+      <td>string. HTTP URL</td>
+      <td>the internet and immediately accessible privacy policy of the service referred to by the receipt</td>
+      <td><code>http://example.com/privacy</code></td>
+      <td>&#10003;</td>
+  </tr>
+
+  <tr class="section-header">
+      <td><strong>Section 3: <br>Purpose Specification</strong></td>
+      <td>-------------</td>
+      <td>List Purpose</td>
+      <td>-------------</td>
+      <td></td>
+  </tr>
+
+  <tr>
+      <td><code>purpose</code></td>
+      <td>array of string's arrays.</td>
+      <td>Explicit, Specific and Legitimate: interpreted here as: 'Naming the Service' and 'Stating the Active Purpose ' see <a href="#appendix">Appendix A</a> these requirements</td>
+      <td><code>[Bob’s store, delivery, ]or [[" CISWG Membership", "Join"]]</code></td>
+      <td>&#10003;</td>
+  </tr>
+
+  <tr class="section-header">
+      <td><strong>Section 4: <br>Sensitive Personal Information</strong></td>
+      <td>-------------</td>
+      <td>List 3rd Party Sharing Activities</td>
+      <td>-------------</td>
+      <td></td>
+  </tr>
+
+  <tr>
+    <td><code>sensitive</code></td>
+    <td>array of strings.</td>
+    <td>In many jurisdictions their are additional notice and administrative requirements for the collection, storage and processing of what are called Sensitive Personal Information Categories. These are Sensitive in the business, legal, and technical sense, but not specifically in the personal context. This list of categories are required in some jurisdiction, but, the actual notice and purpose requirements are out the scope of the MVCR.</td>
+    <td><code>["health"]</code></td>
+    <td>&#10003;</td>
+  </tr>
+
+  <tr class="section-header">
+      <td><strong>Section 5: <br>Information Sharing</strong></td>
+      <td>-------------</td>
+      <td>Sharing information with 3rd parties, what categories, with whom, and how information is shared</td>
+      <td>-------------</td>
+      <td></td>
+  </tr>
+
+  <td><code>sharing</code></td>
+    <td>object</td>
+    <td>
+      <p>This refers to the sharing of personal information collected about the individual, with another external party by the data controller (service provider). Should list categories of PII shared, from above list and under what purpose. Sharing is also a container for listing trust marks and trust protocols.</p>
+      <div class="well">
+          <p>The object contains information of the sharing in the following fields:</p>
+      
+          <table class="table table-condensed table-hover">      
+            <thead>
+              <tr>
+              <th>Field Name</th>
+                <th>Data Type</th>
+                <th>Description</th>
+                <th>Example Input</th>
+                <th>Required</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <tr>
+                <td><code>sharing</code></td>
+                <td>array of strings.</td>
+                <td>Data categories to share</td>
+                <td><code>None</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>party_name</code></td>
+                <td>string.</td>
+                <td>3rd party to share data</td>
+                <td><code>3rd Party Name or/3rd Party Category</code></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td><code>purpose</code></td>
+                <td>string.</td>
+                <td>How information is shared</td>
+                <td><code>None</code></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </td>
+    <td><code>{party_name: "3rd Party Name or/3rd Party Category"}</code></td>
+    <td>&#10003;</td>
+
+  <tr class="section-header">
+      <td><strong>Section 6: <br>Optional Or In Review</strong></td>
+      <td>-------------</td>
+      <td>-------------</td>
+      <td>-------------</td>
+      <td></td>
+  </tr>
+
+  <tr>
+      <td><code>notice</code></td>
+      <td>string. HTTP URL</td>
+      <td>Link to the short notice enables usability and layered policy. to provide enhanced transparency about data collection and information sharing practices</td>
+      <td><code>http://example.com/shortnotice</code></td>
+      <td>&#10003;</td>
+  </tr>
+
+  <tr>
+      <td><code>scopes</code></td>
+      <td>string. space separated string values</td>
+      <td>What you’re allowed to do on the service (these can be tied to legal / business / technical layers)</td>
+      <td><code>read update</code></td>
+      <td></td>
+  </tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<div class="row" style="margin-top: 20px">
+
+<div class="col-md-10">
+
+<div class="well">
+
+<h3 id="signature">Digital signature information</h3>
+
+<p>The output JWT is signed using the <code>RS256</code> algorithm defined in JSON Web Signatures. The server's public key is published in JSON Web Key format at:</p>
+
+<p><code><a href="http://www.consentreceipt.org/api/jwk">http://www.consentreceipt.org/api/jwk</a></code></p>
+
+</div>
+
+</div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-12">
+
+    <div class="well">
+
+      <h3 id="example">Example</h3>
+
+      <p>An example input to the API is the following JSON object:</p>
+
+      <p><pre>
+      {
+        "jurisdiction" : "US",
+        "iat": 1443282118,
+        "moc": "web form",
+        "iss": "http://www.consentreceipt.org/",
+        "jti": "cba37edd4e223a44ea0197498663af81c0d68cdf7b5f13975096e34435339e51f86b6bf674f9725632b6f451b4a78c2fb09d3fcd38c978f004fcf99e65bdceab",
+        "sub" : "example@example.com" ,
+
+        "data_controller" : {"on_behalf": true, "contact": "Dave Controller", "company": "Data Controller Inc.", "address": "123 St., Place", "email": "dave@datacontroller.com", "phone": "00-123-341-2351"},
+        "policy_uri" : "http://example.com/privacy" ,
+
+        "purpose" : [["Bob's Store", "delivery", "financial"]],
+
+        "sensitive" : ["health"] ,
+
+        "sharing" : {sharing:"financial",party_name: "demographic", purpose: "delivery"},
+
+        "notice" : "http://example.com/shortnotice" ,
+        "scopes" : "read update"
+      }
+      </pre></p>
+
+      <p>This produces output like the following signed JWT:</p>
+
+      <p><code style="word-wrap: break-word; overflow-wrap: break-word;">
+      eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdXJpc2RpY3Rpb24iOiJVUyIsIm1vYyI6IndlYiBmb3JtIiwic3ViIjoiZXhhbXBsZUBleGFtcGxlLmNvbSIsIm5vdGljZSI6Imh0dHA6Ly9leGFtcGxlLmNvbS9zaG9ydG5vdGljZSIsInBvbGljeV91cmkiOiJodHRwOi8vZXhhbXBsZS5jb20vcHJpdmFjeSIsImRhdGFfY29udHJvbGxlciI6eyJvbl9iZWhhbGYiOnRydWUsImNvbnRhY3QiOiJEYXZlIENvbnRyb2xsZXIiLCJjb21wYW55IjoiRGF0YSBDb250cm9sbGVyIEluYy4iLCJhZGRyZXNzIjoiMTIzIFN0LiwgUGxhY2UiLCJlbWFpbCI6ImRhdmVAZGF0YWNvbnRyb2xsZXIuY29tIiwicGhvbmUiOiIwMC0xMjMtMzQxLTIzNTEifSwicHVycG9zZSI6W1siQm9iJ3MgU3RvcmUiLCJkZWxpdmVyeSIsImZpbmFuY2lhbCJdXSwic2Vuc2l0aXZlIjpbImhlYWx0aCJdLCJzaGFyaW5nIjp7InNoYXJpbmciOlsiZmluYW5jaWFsIl0sInBhcnR5X25hbWUiOiJkZW1vZ3JhcGhpYyIsInB1cnBvc2UiOiJkZWxpdmVyeSJ9LCJzY29wZXMiOiJyZWFkIHVwZGF0ZSIsImp0aSI6ImNiYTM3ZWRkNGUyMjNhNDRlYTAxOTc0OTg2NjNhZjgxYzBkNjhjZGY3YjVmMTM5NzUwOTZlMzQ0MzUzMzllNTFmODZiNmJmNjc0Zjk3MjU2MzJiNmY0NTFiNGE3OGMyZmIwOWQzZmNkMzhjOTc4ZjAwNGZjZjk5ZTY1YmRjZWFiIiwiaWF0IjoxNDQzMjgyMTE4LCJpc3MiOiJodHRwOi8vd3d3LmNvbnNlbnRyZWNlaXB0Lm9yZy8ifQ.LNY1NdOQg06iI003Mbi56_cnzd3VY7_hO6sn79z65OPXbEU06Budr8juV9HR_EHSCq9C5ungou02b2r15Imp7beIkXJzoVZMdX-_nK-BwaP4hu128TabCUkMAYq0Egk2IQVJV4tsrAjJMbC_l8rE8UDpWDPPNSoV40PCR12_vYeuvTn6Pe8LL9xwcPX0Gz57amqrp4bcs_MUaVfL6L6QH7cPv3MZAnSWBrgGevcQh6m0X0b4jonasyr63falMl3AlCSzSZgwf33ZaPoH8Ioo6zMPEgTtw0EWnSVSBl8Tp06KAqdhFbZ0SPg6DSQoGcNS-vihJDDqmsV_gLv1RmFqQQ  
+      </code></p>
+
+      <p>The header portion of the JWT contains:</p>
+
+      <p><pre>
+      {
+        "alg": "RS256",
+        "typ": "JWT"
+      }
+      </pre></p>
+
+      <p>The payload portion of the JWT contains:</p>
+
+      <p><pre>
+      {
+        data_controller: {
+          address: "123 St., Place",
+          company: "Data Controller Inc.",
+          contact: "Dave Controller",
+          email: "dave@datacontroller.com",
+          on_behalf: true,
+          phone: "00-123-341-2351",
+        },
+        iat: 1443282118,
+        iss: "http://www.consentreceipt.org/",
+        jti: "cba37edd4e223a44ea0197498663af81c0d68cdf7b5f13975096e34435339e51f86b6bf674f9725632b6f451b4a78c2fb09d3fcd38c978f004fcf99e65bdceab",
+        jurisdiction: "US",
+        moc: "web form",
+        notice: "http://example.com/shortnotice",
+        policy_uri: "http://example.com/privacy",
+        purpose:[["Bob's Store", "delivery", "financial"]],
+        scopes: "read update",
+        sensitive: ["health"],
+        sharing: {
+          party_name: "demographic",
+          purpose: "delivery",
+          sharing: ["financial"]
+        },
+        sub: "example@example.com"
+      }
+      </pre></p>
+    </div>
+  </div>
+</div>
+
+
+<div class="row" id="appendix">
+  <h1>Appendix</h1>
+
+  <div class="col-md-12">
+
+    <h3 id="output-fields">Purpose Specification</h3>
+
+    <table class="table table-striped table-hover table-border">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Descriptions</th>
+          <th>Short Code</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Enabling us to carry out the core functions of our site/app/services</td>
+          <td><code>Core Function</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Providing contracted or requested services to you.</td>
+          <td><code>Contracted Service</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Delivering physical goods to you. </td>
+          <td><code>Delivery</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Communicating with you about information or services you specifically request.</td>
+          <td><code>Contact Requested</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Providing you with a personalized experience of our site/app/service.</td>
+          <td><code>Personalized Experience</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Communicating with you about our other services you may be interested in.</td>
+          <td><code>Marketing</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Communicating with you about the services of third parties you may be interested in.</td>
+          <td><code>Marketing Third Parties</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Providing the information to third parties to deliver our services on our behalf. </td>
+          <td><code>Sharing for Delivery</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Providing the information to third parties to enable them to communicate with you about their own services you may be interested in.</td>
+          <td><code>Sharing for Marketing</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Providing the information to third parties to enable them to deliver or improve their own services to you.</td>
+          <td><code>3rd Party Sharing for Core Function</code></td>
+          <td>Service delivery dependent? Or for improved non dependent  service deliver?</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Providing the information to third parties to enable them to deliver or improve their own services to others.</td>
+          <td><code>3rd Party Sharing for ...</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>Complying with our legal obligations for record keeping.</td>
+          <td><code>Legally Required Data  Retention</code></td>
+          <td>Is jurisdiction assumed?</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>Complying with our legal obligations to provide the information to law enforcement or other regulatory/government bodies.</td>
+          <td><code>Required by Law Enforcement or Government</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>Protecting your vital and health interests.</td>
+          <td><code>Protecting Your Health</code></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td>Protecting our legitimate interests, yours or those of a third party.</td>
+          <td><code>Protecting Our Interests</code></td>
+          <td>Is self interest a valid purpose?</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>Measure or improve our performance or the delivery of our services.</td>
+          <td><code>Improve Performance</code></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 id="output-fields">Data Attributes</h3>
+    <table class="table table-striped table-hover table-border">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Category</th>
+          <th>Description of Category</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><code>Biographical</code></td>
+          <td>General information like Name, DOB, Family info (mother’s maiden name), marital status. Historical data like educational achievement, general employment history.</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td><code>Contact</code></td>
+          <td>Contact – (Address, Email, Telephone Number, etc.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td><code>Biometric</code></td>
+          <td>Biometric – (Photos, fingerprints, DNA. General physical characteristics – height, weight, hair colour. Racial/ethnic origin or identification - whether self-identified or not)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td><code>Social Contact</code></td>
+          <td>Communications/Social – (Email, message and phone records – both content and metadata. Friends and contacts data.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td><code>Network/Service</code></td>
+          <td>Network/Service – (Login ids, usernames, passwords, server log data, IP addresses, cookie-type identifiers)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td><code>Health</code></td>
+          <td>Health – (Ailments, treatments, family doctor info. X-rays and other medical scan data)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td><code>Financial</code></td>
+          <td>Financial – (This includes information such as bank account, credit card data. Income and tax records, financial assets/liabilities, purchase/sale of assets history.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td><code>Official ID</code></td>
+          <td>Official/Government Identifiers – (This includes any widely recognized identifiers that link to individual people. Examples include National Insurance, ID card, Social security, passport and driving license numbers, NHS number (UK). Just the numbers rather than data associated with them.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td><code>Social Benefit Data</code></td>
+          <td>Social Services/Welfare – (Welfare and benefits status and history)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td><code>Judicial Data</code></td>
+          <td>Judicial – (Criminal and police records, including traffic offenses.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td><code>Asset Data</code></td>
+          <td>Property/Asset – (Identifiers of property – license plate numbers, MAC addresses for mobiles, other device identifiers. Not financial assets. Could include digital assets like eBook and digital music data)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td><code>HR Data</code></td>
+          <td>Human Resources – (Records held about employees/ members/ students not elsewhere defined. Incl. HR records such as job title, attendance/disciplinary records. Salary - as opposed to income.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td><code>Mental Health</code></td>
+          <td>Psychological/Attitudinal – (Inc. religious, political beliefs, sexual orientation and gender identity – though not genetic gender which is Biometric. Traits and personality measures or assessments, but not psychological health - which is health data).</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td><code>Membership</code></td>
+          <td>Membership – (Political, trade union affiliations, any other opt-in organizational/group membership data - third party organizations only. Includes name of employer when not held by employer. Could extend to online platform membership. Some might be more sensitive than others – may want a separate category)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td><code>Behavioral</code></td>
+          <td>Behavioral – (Any data about the behavior, habits or movements of an individual - electronic or physical. Location, browser/search history, web page usage (analytics), energy usage (smart meters), login history, calendar data, etc.)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td><code>Profiling</code></td>
+          <td>Profile – (Marketing and social segmentation data. Any categorization that impacts information presented or decisions made about an individual. This might be observed or derived data (algorithmic) or volunteered by the individual. Profile data is often generated from behavioral data).</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+</div>
+
+
+
+
+  </div> <!-- /container -->  
+
+      <footer>
+		  
+	        <div class="col-md-1"> 
+	          <a href="https://kantarainitiative.org/confluence/display/infosharing/Home"><img id="cis" src="../img/cis.png" /></a>
+	        </div>
+	        <div class="col-md-9">
+	          The Example Consent Receipt Generator is brought to you through the expertise of the Kantara Initiative Consent and Information Sharing Work Group and through funding provided by the <a href="http://kantarainitiative.org/">Kantara Initiative</a>.
+	        </div>
+			<div class="col-md-2">
+				<a href="http://kantarainitiative.org/"><img id="kantara" src="../img/kantara.png" /></a>
+			</div>
+        
+    </footer>
+
+      <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+      <script src="../js/vendor/bootstrap.min.js"></script>
+
+      <!-- <script src="../js/main.js"></script>-->
+  </body>
+</html>
+
+

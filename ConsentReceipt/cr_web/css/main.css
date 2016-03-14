@@ -1,0 +1,129 @@
+
+
+/* ==========================================================================
+   cr_web custom styles
+   ========================================================================== */
+
+span.input-group-addon {
+	max-height: 1em;
+	line-height: 1em;
+}
+
+
+.form-group > label{
+	margin-left:-20px;
+}
+
+.wrap {
+	word-wrap: break-word;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #fff;
+}
+
+
+#rhidden {
+	display: none;
+}
+
+.receipt span {
+	font-style: italic;
+}
+
+.rindent {
+	margin-left:20px;
+	font-style: italic;
+}
+
+div.cis {
+	color:#333;
+	font-size:1em;
+	float: right;
+	margin:1em;
+
+}
+
+img#cis {
+	width:7em;
+	float:right;
+}
+
+.control-label{
+	text-align: left !important;
+}
+
+.widget-header{
+	border-bottom: 2px double grey;
+	margin-bottom: 10px
+}
+
+.widget-content{
+	background-image: none;
+	background-color: transparent;
+	padding-left: 30px;
+	padding-right: 5px;
+}
+
+.child-label{
+	font-weight: normal;
+	padding-top: 6px;
+	padding-left: 20px
+}
+
+.controls{
+	padding: 0;
+}
+
+.select2-container{
+	width: 100% !important;
+}
+
+.purpose .form-group{
+	margin-left: 0;
+	margin-right: 0;
+	padding-top: 10px;
+	padding-left: 10px
+}
+
+.purpose{
+	margin-right: 5px;
+	border: 1px solid #dcdcdc;
+	border-radius: 4px;
+}
+
+.controls .input-group{
+	width: 100%;
+}
+
+.form-horizontal .form-group{
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
+
+.red{
+	color: red;
+}
+
+.purpose{
+	margin-top: 10px;
+}
+
+#options, #purpose_template{
+	display: none;
+}
+
+.bg-success .glyphicon-ok{
+	color: green;
+	font-style: normal;
+}
+
+.bg-danger .glyphicon-remove{
+	color: red;
+	font-style: normal;
+}
+
+.bg-danger .glyphicon-warning-sign{
+	color: orange;
+	font-style: normal;
+}

@@ -1,0 +1,17 @@
+{
+ 
+ 	"jurisdiction" : "US",
+ 	"sub" : "sarah@engageidentity.com" ,
+ 	"svc" : ["amazon","amazon express"] ,
+ 	"notice" : "http://example.com/notice" ,
+ 	"policy_uri" : "http://example.com/policy" ,
+ 	"data_controller" : {"on_behalf": true, "contact": "Dave Controller", "company": "Data Controller Inc.", "address": "123 St., Place", "email": "dave@datacontroller.com", "phone": "00-123-341-2351"},
+ 	"consent_payload" : {"privacy policy" : "agree","ToS" : "agree"} ,
+ 	"purpose" : ["marketing","research"] ,
+	"pii_collected" : {"name" : "Sarah Squire","email" : "sarah@engageidentity.com"} ,
+	"sensitive" : ["http://example.com/medical","http://example.com/financial"] ,
+	"sharing" : ["contact information","demographic information"] ,
+	"context" : ["active privacy policy consent","passive terms of service consent"] ,
+	"aud" : "http://engageidentity.com/protected" ,
+	"scopes" : "read update"
+}

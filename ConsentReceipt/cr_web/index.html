@@ -1,0 +1,498 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Consent Receipt Generator</title>
+        <meta name="description" content="Demonstration website for a consent receipt generation service">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 50px;
+                padding-bottom: 20px;
+            }
+			#sig {
+				padding: 15px;
+				border: 1px #cccccc solid;
+			}
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link href="css/select2.css" rel="stylesheet" />
+        <link href="css/select2-bootstrap.css" rel="stylesheet" />
+        <link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript">
+		var exports = {};
+		</script>
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="js/vendor/jsrsasign.js"></script>
+
+       
+    </head>
+    <body>
+
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+   <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-barcode"></span> Consent Receipt Generator</a>
+		  </div>
+	    <div class="collapse navbar-collapse">
+	      <ul class="nav navbar-nav">
+	        <li><a href="/doc/">API Documentation</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+
+	</div>
+
+  </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Example Consent Receipt Generator</h1>
+        <p>This page demonstrates a Consent Receipt generation function. The data in the form is sent to an <a href="doc/">API</a> that generates a signed receipt in a JSON Web Token Format. This page then renders the resulting signed receipt and lets you download the raw receipt object.</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-5">
+          <h2>Consent Receipt Input</h2>
+          <p>Form values are suggestion for reference.</p>
+          <div class="container">
+    <div class="row">
+        <form role="form" class="form-horizontal" id="consent_form">
+            <div class="col-lg-6" style="padding-left:0">
+                <div class="well well-sm"><strong></span>Not Required Fields</strong></div>
+                <div class="widget">
+                  <div class="widget-header">
+                    <h3>CR Header</h3>
+                  </div>
+                  <div class="widget-content well">
+                    <div class="form-group">
+                      <label for="jurisdiction" class="col-md-4 control-label">Jurisdiction</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="jurisdiction" id="jurisdiction" placeholder="Example: US" value="US">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="timestamp" class="col-md-4 control-label">Time Stamp</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="iat" id="timestamp" placeholder="Issue Timestamp">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="method" class="col-md-4 control-label">Method Of Collection</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="moc" id="method" placeholder="Webform opt in, implicit, verbal, etc" value="web form">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="processor" class="col-md-4 control-label">Consent Processor</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="iss" id="processor" placeholder="URL or Internet location of processing" value="http://www.consentreceipt.org/">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="uniqueID" class="col-md-4 control-label">Unique ID</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="jti" id="uniqueID" placeholder="Unique identifier" value="9ef6b81a414b2432ec6e3d384c5a36cea8aa0c30d3dd2b67364126ed80856f9c20654f032eef87ad981187da8c23c1186eefe1503714835c2e952bbb3f22729c" >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="principal" class="col-md-4 control-label">PII Principal</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="sub" id="principal" placeholder="Email or address claim" value="example@example.com">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-header">
+                    <h3>Data Controller</h3>
+                  </div>
+                  <div class="widget-content well">
+                    <div class="form-group">
+                      <label class="col-md-12 control-label">Data Controller</label><br>
+                      <div class="input-group checkbox">
+                        <label><input type="checkbox" id="data_controller_on_behalf" value="true" checked name="data_controller.on_behalf"> Is acting on behalf of company taking consent?</label><br>
+                      </div><br>
+
+                      <label class="col-md-3 child-label">Contact Name</label> 
+                      <div class="input-group col-md-9">
+                        <input type="text" class="form-control" id="data_controller_contact" placeholder="Example: Contact Name" value="Dave Controller" name="data_controller.contact">
+                      </div><br>
+
+                      <label class="col-md-3 child-label">Company Name</label>
+                      <div class="input-group col-md-9">
+                        <input type="text" class="form-control" id="data_controller_company" placeholder="Example: Company Name" value="Data Controller Inc." name="data_controller.company">
+                      </div><br>
+
+                      <label class="col-md-3 child-label">Address</label>
+                      <div class="input-group col-md-9">
+                        <input type="text" class="form-control" id="data_controller_address" placeholder="Example: Address" value="123 St., Place" name="data_controller.address">
+                      </div><br>
+
+                      <label class="col-md-3 child-label">Contact Email</label>
+                      <div class="input-group col-md-9">
+                        <input type="text" class="form-control" id="data_controller_email" placeholder="Example: example@example.com" value="dave@datacontroller.com" name="data_controller.email">
+                      </div><br>
+
+                      <label class="col-md-3 child-label">Phone Number</label>
+                      <div class="input-group col-md-9">
+                        <input type="text" class="form-control" id="data_controller_phone" placeholder="Example: 00-000-000-0000" value="00-123-341-2351" name="data_controller.phone">
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="policy_uri" class="col-md-4 control-label">Privacy Policy URL</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="policy_uri" id="policy_uri" placeholder="Example: http://example.com/privacy" value="http://example.com/privacy">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-header">
+                    <h3>Purpose Specification</h3>
+                  </div>
+                  <div class="widget-content well">
+                    <div class="form-group">
+                      <label for="jurisdiction" class="col-md-4 control-label">Purpose</label>
+                      <div class="col-md-8 controls">
+                        <button class="btn btn-primary pull-right" id="purpose">
+                          <span class="glyphicon glyphicon-plus"></span>
+                          Add Purpose
+                        </button>
+                      </div>
+                    </div>
+
+                    <div class="purpose_list"></div>
+
+                    <div id="purpose_template">
+                      <div class="purpose">
+                        <div class="col-md-12" style="padding-bottom: 5px;">
+                          <a class="pull-right close" title="Remove">x</a>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-md-4 child-label">Service Name</label>
+                          <div class="col-md-8 controls">
+                            <div class="input-group">
+                              <input type="text" class="form-control" value="" placeholder="Service Name"/>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-md-4 child-label">Purpose</label>
+                          <div class="col-md-8 controls">
+                            <div class="input-group">
+                              <input class="purpose_item" type="hidden">
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-md-4 child-label"><span class="red">*</span> PI Category</label>
+                          <div class="col-md-8 controls">
+                            <div class="input-group">
+                              <input class="pi_sensitive" type="hidden">
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-header">
+                    <h3>Sensitive Personal Information</h3>
+                  </div>
+                  <div class="widget-content well">
+                    <div class="form-group">
+                      <div class="col-md-12 controls">
+                        <div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" id="on_sensitive">Are any of data types legally sensitive in the jurisdiction and context in which it is being shared?</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="false" id="other">Other</label>
+                            <input type="text" style="width:70%; margin-left: 5%" disabled id="other_pi">
+                          </div>
+                        </div><br>
+
+                        <!-- <div class="col-md-12">
+                          <label class="child-label col-md-2" style="padding-left:0"><span class="red">*</span> Category</label>
+                          <div class="col-md-9">
+                            <input type="hidden" class="pi_sensitive">
+                          </div>
+                        </div><br> -->
+
+                        <div id="options" class="col-md-12">
+                          <label>Check your sensitive category: </label>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="health" name="sensitive_options">Heath</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="financial" name="sensitive_options">Financial</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="child_data" name="sensitive_options">Child Data</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="location" name="sensitive_options">Location</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="official_identifiers" name="sensitive_options">Official Identifiers</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="psycho_social_belief" name="sensitive_options">Psycho/Social/Belief</label>
+                          </div>
+                          <div class="checkbox">
+                            <label><input type="checkbox" value="membership" name="sensitive_options">Membership</label>
+                          </div>
+                        </div>
+
+                        
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-header">
+                    <h3><span class="red">*</span> Information Sharing</h3>
+                  </div>
+                  <div class="widget-content well">
+                    <div class="form-group">
+                      <label for="sharing" class="col-md-4 control-label">Sharing </label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="hidden" style="width:300px" id="sharing"/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="forparty" class="col-md-4 control-label">Data to </label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" id="forparty" value="3rd Party Name or/3rd Party Category" placeholder="Name Or Type Of 3rd Party" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="sharing" class="col-md-4 control-label">For the purpose of </label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="hidden" id="sharing_purpose"/>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="widget">
+                  <div class="widget-header">
+                    <h3><span class="red">*</span> Optional Or In Review</h3>
+                  </div>
+                  <div class="widget-content well">
+                    <div class="form-group">
+                      <label for="notice" class="col-md-4 control-label">Short Notice Link</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="notice" id="notice" value="http://example.com/shortnotice" placeholder="Example: http://example.com/shortnotice"/>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="scope" class="col-md-4 control-label">Scope</label>
+                      <div class="col-md-8 controls">
+                        <div class="input-group">
+                          <input type="text" class="form-control" name="scopes" id="scope" value="read update" placeholder="What you're allowed to do on the service"/>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>          
+            </div>
+        </form>
+        
+       
+    </div>
+    <button id="submit" class="btn btn-primary">Create Receipt &raquo;</button>
+</div>
+          
+        </div>     
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5 well receipt">
+          <h2>Receipt Contents</h2>
+          <p id="receipt">The unencoded contents of your receipt will appear here after you submit the form. </p>
+          <div id="rhidden">
+            <p></p>
+            <!--CR Header-->
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Jurisdiction</button>
+            </p>
+            <p id="rjurisdiction" class="rindent">
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Timestamp</button>
+            </p>
+            <p id="riat" class="rindent wrap">
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Method Of Collection</button>
+            </p>
+            <p id="rmoc" class="rindent">
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Consent Processor</button>
+            </p>
+            <p id="riss" class="rindent">
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Unique ID</button>
+            </p>
+            <p id="rjti" class="rindent wrap">
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">PII Principal</button>
+            </p>
+            <p id="rsub" class="rindent wrap">
+            </p>
+
+            <!-- Data controller-->
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Data Controller</button>
+            </p>
+            <p class="rindent">
+              is acting on behalf of company: <span id="rdata_controller_on_behalf"></span><br>
+
+              Contact Name: <span id="rdata_controller_contact"></span><br>
+  
+              Company Name: <span id="rdata_controller_company"></span><br>
+  
+              Address: <span id="rdata_controller_address"></span><br>
+  
+              Contact Email: <span id="rdata_controller_email"></span><br>
+  
+              Phone Number: <span id="rdata_controller_phone"></span><br>
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Privacy Policy URL</button>
+            </p>
+            <p id="rpolicy_uri" class="rindent">
+            </p>
+
+            <!--Purpose-->
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Purposes</button>
+            </p>
+            <p id="rpurpose" class="rindent">
+            </p>
+
+            <!--sensitive-->
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Sensitive Personal Information</button>
+            </p>
+            <p id="rsensitive" class="rindent">
+            </p>
+
+            <!--sharing-->
+            <p>
+              <button type="button" class="btn btn-info btn-xs">3rd party sharing of personal information</button>
+            </p>
+            <p id="rsharing" class="rindent">
+              Sharing <span id="rsharing_data"></span> data to <span id="rsharing_name"></span> for the purpose of <span id="rsharing_purpose"></span>
+            </p>
+
+            <!--Optional -->
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Link to Short Privacy Notice</button>
+            </p>
+            <p id="rnotice" class="rindent">
+            </p>
+            <p>
+              <button type="button" class="btn btn-info btn-xs">Oauth Scopes</button>
+            </p>
+            <p id="rscope" class="rindent">
+            </p>            
+			<p id="sig" class="bg-warning">Checking signature...</p>
+			
+
+
+          </div>
+          <p id="receiptdl" ><a class="btn btn-primary" href="#" download role="button" disabled="disabled">Download Receipt &raquo;</a></p>
+
+</script>
+       </div>
+      </div>
+
+      <hr>
+
+      <footer>
+		  
+	        <div class="col-md-1"> 
+	          <a href="https://kantarainitiative.org/confluence/display/infosharing/Home"><img id="cis" src="img/cis.png" /></a>
+	        </div>
+	        <div class="col-md-9">
+	          The Example Consent Receipt Generator is brought to you through the expertise of the Kantara Initiative Consent and Information Sharing Work Group and through funding provided by the <a href="http://kantarainitiative.org/">Kantara Initiative</a>.
+	        </div>
+			<div class="col-md-2">
+				<a href="http://kantarainitiative.org/"><img id="kantara" src="img/kantara.png" /></a>
+			</div>
+        
+      </footer>
+    </div> <!-- /container -->  
+
+
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/select2.min.js"></script>     
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
