@@ -1,0 +1,49 @@
+# Appendix A =   Use Case for Consent Receipt Code Generator for website registration consent transactions
+
+## Description
+
+This use case is for a typical website registration and consent scenario.
+
+This MVCR use case:
+ * provides a context checklist for Fair & Reasonable
+ *
+
+[HF: It is not clear what this use case is describing.  Is it describing the
+creation of an MVCR, the creation and use of an MVCR, or just the use of
+an MVCR?]
+
+This is describing the creation of an MVCR.
+
+
+
+## Appendix: 
+
+In order to enable organizations to provide static consent receipts to their data subjects, a code generator will be provided to enable organizations to enter the basic information for their own MVCR to receive code that they can embed on their own web site.
+
+Main Flow
+
+ 1. Organization provides content for minimum viable consent receipt
+ 2. System validates input
+ 3. System generates code for embedding
+ 4. Organization downloads code
+ 5. Organization installs code on their web site
+
+Please see the conceptual wireframe on the next page.
+
+   * The use case ends when the user accepts the consent receipt, or declines
+to collect a receipt.
+
+[HF: What is this table describing?]
+
+| Description Detail | Notes |
+| ---- | ---- |
+| Related Requirements | The provision of a consent receipt enables data providers to demonstrate their compliance with regulatory requirements for notice and consent. |
+| Preconditions | Before a consent receipt can be issued the following conditions must be true: *  The user has provided the necessary information about themselves to complete registration ** This should include sufficient notice to meet regulatory requirements for the jurisdiction in which the site operates * The organization has a privacy policy and/or terms of use and/or equivalent documentation to complete the mandatory fields in the consent receipt. * The consent receipt that will be issued is authorized by an appropriate authority in the organization (i.e. this consent receipt is a business record of a transaction). |
+| Successful End Conditions | • A consent receipt that contains the fields described below has been generated and offered to the data subject. • A copy of the consent receipt is stored by the Data Controller. • A record of the creation of the consent receipt has been created and logged. • The data subject has received a copy of the consent receipt or has indicated that they do not want a copy of the consent receipt. o The data subject’s decision about accepting or not accepting the consent receipt will be logged. |
+| Failed End Conditions | The data subject completes site registration with receiving being offered a consent receipt. |
+| Primary Actors | Data Subject, Data Controller|
+| Secondary Actors | Identity Provider; Open Notice Registry: A third party that provides validated information about the Data Controller’s compliance. |
+| Trigger | Data Subject provision of site registration information. |
+| Main Flow| 1. Data Controller display or provides notice to the data subject 2. Data subject provides registration information, including personally identifiable information where required. 3. Data Controller validates input 4. Data Controller generates and displays consent receipt 5. Data subject decision receives a copy of the consent receipt 6. Data Controller stores a copy of the consent receipt 7. Data Controller logs transaction |
+| Extension | 2a: Data subject identity information is provided by a third party 5a: Data subject elects not to receive a copy of the consent receipt 6a: Data Controller does not store a copy of the consent receipt |
+
