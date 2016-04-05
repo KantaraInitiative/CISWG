@@ -1,4 +1,4 @@
-# Minimum Viable Consent Receipt (MVCR) for a Consistent Record of Consent - #
+# Minimum Viable Consent Receipt (MVCR) for a Consistent Record of Consent #
 
 | Document Information  | |
 | ------	| ------	|
@@ -121,7 +121,7 @@ Terminology herein leverages where possible,  [ISO/IEC 29100:2011 "Information T
   (includes self-asserted and externally defined consent type), MVCR Lite Mode demonstrates   receipt  conformance with the MVCR, but is limited to conformance, and makes no compliance claims, but can demonstrate conformance with MVCR using defined consent types.
 
 * **Explicit Consent Reference**  
-  is described by a direct link  to a law or authoritative policy ; consent regulation, privacy principles, other consent standards, or industry best practices.  
+	Is best described as a directly linked field  to a function, law, or authoritative policy ; consent regulation, privacy principles, other consent standards, or industry best practices.  
 
 * **EXPRESS Consent** 
 	Refers to the context of a PI Principal making an unambigous agreement  to consent.  It is conceivable, in the context of this specification, that a consent can be  expressed  and contain explicit consent references to also be compliant  (see council of Europe 5.4.4 https://goo.gl/JGPX2Y)
@@ -175,7 +175,7 @@ Terminology herein leverages where possible,  [ISO/IEC 29100:2011 "Information T
 
 * **Sensitive Personal Information (PI) Categories**
   All Sensitive Information Categories require Explicit Consent 
-  Out of scope of the MINIMUM MVCR - See 6.5. Explicit Consent
+  Out of scope of the MVCR - See 6.5. Explicit Consent
 
 * **Sensitive PI Categories**
     (Use only for Explicit Consent: used in MVCR for creating compliance claims)
@@ -260,7 +260,7 @@ This section specifies personal information categories, attributes, PI confident
 
 ### 5.5 3rd Party Sharing (TBF)
 
-The purpose of this section is to provide the PII Subject with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties, the specified purpose and at the minimum the data categories shared may be listed here.
+The purpose of this section is to provide the PII Subject with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties can be specified, using purpose and at the minimum the purpose categories for the sharing of PIx.
 
 | Receipt Field Label | Receipt Field Format | Data Field Name | Data Type | Example Data Input | Receipt Field Description | Purpose of Field  | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -279,11 +279,11 @@ The purpose of this section is to provide the PII Subject with information about
 # 6. Conformance Table
 
 This  table specifies requirements to fulfill conformance for each mode as defined.
-MINIMUM MVCR is for all types of implied and mixed consent contexts.
+ MVCR is for all types of implied and mixed consent contexts.
 EXPLICIT MVCR is for standardised consent contexts
 COMPLIANT MVCR is for specific privacy controls as defined by regulation or policy
 
-| Field # | Field Name | MINIMUM MVCR  | Explicit MVCR | COMPLIANT MVCR UK | Scope |
+| Field # | Field Name |  MVCR  | Explicit MVCR | COMPLIANT MVCR UK | Scope |
 | ------ | ------ | -----| :------: | :------: | :------: |
 | 1 | _Jurisdiction_ | SHOULD | MUST | MUST |  |  |
 | 2 | _Consent Time Stamp_ | MUST |   MUST| | |
@@ -317,53 +317,63 @@ COMPLIANT MVCR is for specific privacy controls as defined by regulation or poli
 
 ## 6.1. Global Guidance
 
-* All conformance profiles culminate, in that the MINIMUM MVCR is used to build the EXPLICIT MVCR, which is used to create a COMPLIANT MVCR, all of which is used to develop SCOPE(s).
+* All conformance profiles culminate, in that the MVCR is used to create an, EXPLICIT MVCR, which is used to create a COMPLIANT MVCR, all of which is useful to develop the SCOPE(s) of the consent.
 * All of the record fields should be presented with the consent receipt label field on the receipt which is viewalbe by the receipt receipient.   
 * The receipt can be provisioned in any manner that is feasible or expecte in according to the context. 
 * Propotionailty refers to the context (or medium) of the consent, method of collection, and to how the fieds are linked .  
-	* If it is verbal, then a written receipt with a phone number to the PI Controller is sufficent to make a MINIMUM MVCR
-	* If it is online, Like Bob & Alice website use case, then additional fields are required to make a MINIMUM MVCR
+	* If it is verbal, then a written receipt with a phone number to the PI Controller is sufficent to make the most MINIMUM MVCR
+	* If it is online, Like Bob & Alice website use case, then additional fields are required to make a MVCR
 	* Different context have different expectations, and these can be documented by Consent Type
 
 ### 6.2  MINIMUM MVCR :
 
-The MINIMUM MVCR can be used to create any type of consent record as long as it is not for explict compliance for sensitive data.
+The MINIMUM MVCR can be used to create any type of consent record as long as it is not for  compliance so MUST NOT use  Sensitive Information Categories.
 
 The MUST Requirements  for the MINIMUM MVCR is to:
 * 1. Provide Proof of Consent in form of a dated Receipt
-* 2. Provide Contact details to communicate and manage consent once it is provided, that are proportionate to context of consent provision.
+* 2. Provide Contact details to communicate and manage consent once it is provided, that is proportionate to context of consent provision.
 
-### MINIMUM MVCR Conformance
-The MINIMUM MVCR conformance requirements are intended to make a consent transaction record into a receipt, and to provide people with this receipt as to make this record Open in both a common format and a common practice. Open functionally meaning that not only does the individual and organisation both have a record of the consent, the receipt can be used to communicate about the specific  consent during and after the consent has been provided.
+###  MVCR Conformance
+The  MVCR conformance requirements are intended to make a consent transaction record into a receipt and to provide people with this receipt as to make this record Open in both; a common format and a common practice. Open functionally meaning that not only does the individual and organisation both have a record of the consent, the receipt can be used to communicate about the specific  consent during and after the consent has been provided.
 
-As a result, iterative changes or consent preferences can be developed and collected an managed on consent transaction or on a consent change management basis, as long as it is linked to the original consent and logged.
+As a result, iterative changes or consent preferences can be developed and collected and managed on consent transaction level and with  consent based change management, as long as it is linked to the original consent and logged.
 
-To achieve conformance for consent context (or method of collection), the MUST, SHOULD, and OPTIONAL fields extend a receipt in the MINIMUM MVCR.
+To achieve conformance for consent context (or method of collection), the MUST, SHOULD, and OPTIONAL fields extend to accomadate method of collection, which provides additional receipt reqirements to create a MVCR.
 
-Without providing details about what is sensitive, the consent record can be used with a very low level of liability, and MINIMUM MVCR is not meant to be used for demonstrating MVCR regulatory compliance.
+Without providing details about what is sensitive, the consent record can be used with a very low level of liability, and classified as  implied consent, the  MVCR is not meant to be used for regulatory compliance.
 
 Once consent is provided and parties identified, this consent can be bound to terms of services that require access and use of that PI.
 
-### FIELD CONFORMANCE: MINIMUM MVCR
+### FIELD CONFORMANCE: 
+
+
+####  MVCR EXAMPLE(s) & Guidance 
+
+The Examples and guidance for common forms of MINIMUM MVCR
+
+1. MINIMUM MVCR EXMAPLE:  Verbal Consent
+ A hand written consent receipt for Verbal Consent would be:
+*-On Date, Principal ID has provided verbal consent to, PI Controller, to use this PI Category, for membership, in accordance with printed privacy policy.  All issues or questions can be addressed by calling. PI Controller at Ph#.  (signed: both parties)
+
 | - MUST - | -  PI Controller, Core Purpose, Link to PP, Proportional Contact, Date & Time, Sensitive Y/N, Sharing Y/N,  Principal ID |
 | __SHOULD__ | - Jurisdiction, Consent Type, Collection Method, Service Name, Purpose Category, Purpose Termination, Sensitive  Information y/n, 3rd Party Sharing y/n |
 | __OPTIONAL__ |  PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing Contract, Sharing, Scope(s)
 | MAY |
 | MUST NOT | Sensitive Personal Information Categories | 
 
-#### MiNIMUM MVCR EXAMPLE & Guidance 
-
- A hand written consent receipt for Verbal Consent would be:
-*-On Date, Principal ID has provided verbal consent to, PI Controller, to use this PI Category, for membership, in accordance with printed privacy policy.  All issues or questions can be addressed by calling. PI Controller at Ph#.  (signed: both parties)
-1. MINIMUM MVCR EXMAPLE  
 | timestamp | alice@subject.com | Bob bob@bob.com |   verbal consent  |@bob | Not Sensitive | NO 3rd Party Sharing | Privacy Policy Read at point of Consent | 
 
+2.  MVCR:  Consent Receipts (TBF) 
 
-* For website based consent that context can vary widely depending on the METHOD of Collection and the sensitivity of the PI the MINIMUM changes as a result the CISWG is proposing on recommending a standard set of MINIMUM MVCR fields. 
+* For BOB and Alice Use Case: legacy website based consent, context can vary widely depending on the METHOD of Collection and the sensitivity of the PI the MVCR encorporates the minimum and adds additonal MUST reequirements. 
 
-An online website - consent receipt could range from minimum legal requirements in the UK 
+* Use Case: MVCR: existing consent online (website based enrolment)
 
-2. The Recommended CISWG: MINIMUM MVCR for ONLINE Consent Receipts
+| - MUST - | -  Consent Type, Collection Method, Service Name, Purpose Category, PI Controller, Core Purpose, Link to PP, Proportional Contact, Date & Time, Sensitive Y/N, Sharing Y/N,  Principal ID, Sensitive  Information y/n, 3rd Party Sharing y/n |
+| __SHOULD__ | - Jurisdiction,  Purpose Termination, |
+| __OPTIONAL__ |  PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing Contract, Sharing, Scope(s)
+| MAY |
+| MUST NOT | Sensitive Personal Information Categories | 
 
 ##### Header Example
 
@@ -512,7 +522,7 @@ MINIMUM MVCR Requirements
 * (Note: The more explicit the consent record and receipt the more machine readable it becomes.)
 * All Sensitive Information Categories require Explicit Consent 
 * All the requirements of the previous +  additional fields for the receipt to be deemed explicit for PII in ISO 29100
-*  explicit consent: "Guidelines for Notification, Consent and Choice in Online Services for Consumers" which  http://www.meti.go.jp/press/2014/10/20141017002/20141017002a.pdf (which can be found translated on the Kanatar WIKI - put in link)
+*  explicit consent: "Guidelines for Notification, Consent and Choice in Online Services for Consumers" which  http://www.meti.go.jp/press/2014/10/20141017002/20141017002a.pdf (which can be found translated on the Kanatar WIKI - http://tinyurl.com/explicit-guide )
 
 FIELD CONFORMANCE: EXPLICIT MVCR 
 - MUST -
