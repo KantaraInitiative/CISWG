@@ -75,7 +75,7 @@ Viable, in this scope, means a record of consent that can be retained and used s
 
 ### 2.2 MVCR Modes of Conformance 
 
-The term 'minimum' in the MVCR refers to the least amount of data required to make a consent receipt;  open, explicit and compliant consent record viable for a number of different contexts, defined by:
+The term 'minimum' in the MVCR refers to the least amount of fields required to make a consent receipt for a context;  open, explicit and compliant consent record viable for a number of different contexts, defined by:
 * A) MVCR - Defned by the PI Controller, implied and self-asserted 
 * B) Explicit MVCR -  is  in reference to  ISO 29100 Framework section 4, defined by being a machine readable Explicit consent
 * C) Compliant MVCR - Explicit consent mapped to notice and consent regulatory requirements and privacy controls; Typically Trust frameworks and trust network operators 
@@ -88,7 +88,7 @@ For the  MVCR ONLY goto section 6.2.2  MVCR (alice & bob) CONFORMANCE, GUIDEANCE
 
 (Editors Note: v0.8 has been discussed and is close to a consensus for MVCR for general online use.  , which has been the focus of the consent receipt generator (http://api.consentreceipt.org) and the testing for drafting this v0.8.  (put in URL of Kantara demo - here )
 
- v0.8 (this draft) meets the requirement of providing a Minimum MVCR, but also the specification for the maximum MVCR. I,e. The most explicit a consent receipt could be.
+ v0.8 (this draft) meets the requirement of providing a  MVCR for implied consent, but also the specification for the maximum MVCR, for explicit and compliant consent receipt records.
 
 The extensions for conformance to explicit consent and for meeting compliance requirements are at various levels of spec review and testing by the WG.  As a result only the MINIMUM MVCR Guide - in this v.08 is a candidate for public review, 4-6.3, and the remaining spec is meant for internal  review.
 
@@ -261,7 +261,7 @@ This section specifies personal information categories, attributes, PI confident
 
 ### 5.5 3rd Party Sharing (TBF)
 
-The purpose of this section is to provide the PII Subject with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties can be specified, using purpose and at the minimum the purpose categories for the sharing of PIx.
+The purpose of this section is to provide the PII Subject with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties can be specified, using purpose and at the minimum the purpose categories for the sharing of PI.
 
 | Receipt Field Label | Receipt Field Format | Data Field Name | Data Type | Example Data Input | Receipt Field Description | Purpose of Field  | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -323,16 +323,16 @@ COMPLIANT MVCR is for specific privacy controls as defined by regulation or poli
 * The receipt can be provisioned in any manner that is feasible or expecte in according to the context. 
 * Propotionailty refers to the context (or medium) of the consent, method of collection, and to how the fieds are linked .  
 	* If it is verbal, then a written receipt with a phone number to the PI Controller is sufficent to make the most MINIMUM MVCR
-	* If it is online, Like Bob & Alice website use case, then additional fields are required to make a MVCR
+	* If it is online, Like the normative Bob & Alice website use case, then additional (SHOULD) fields are required (MUST) to make a MVCR
 	* Different context have different expectations, and these can be documented by Consent Type
 
 ### 6.2  MINIMUM MVCR :
 
-The MINIMUM MVCR can be used to create any type of consent record as long as it is not for  compliance so MUST NOT use  Sensitive Information Categories.
+The MINIMUM MVCR can be used to create any type of consent record as long as it is not for compliance so MUST NOT use Sensitive Information Categories.
 
 The MUST Requirements  for the MINIMUM MVCR is to:
 * 1. Provide Proof of Consent in form of a dated Receipt
-* 2. Provide Contact details to communicate and manage consent once it is provided, that is proportionate to context of consent provision.
+* 2. Provide Contact details to communicate and manage consent once it is provided, that is proportionate to context of consent provision and PI harvested.
 
 ###  MVCR Conformance
 The  MVCR conformance requirements are intended to make a consent transaction record into a receipt and to provide people with this receipt as to make this record Open in both; a common format and a common practice. Open functionally meaning that not only does the individual and organisation both have a record of the consent, the receipt can be used to communicate about the specific  consent during and after the consent has been provided.
@@ -346,7 +346,6 @@ Without providing details about what is sensitive, the consent record can be use
 Once consent is provided and parties identified, this consent can be bound to terms of services that require access and use of that PI.
 
 ### FIELD CONFORMANCE: 
-
 
 ####  MVCR EXAMPLE(s) & Guidance 
 
@@ -364,9 +363,9 @@ The Examples and guidance for common forms of MINIMUM MVCR
 
 | timestamp | alice@subject.com | Bob bob@bob.com |   verbal consent  |@bob | Not Sensitive | NO 3rd Party Sharing | Privacy Policy Read at point of Consent | 
 
-2.  Conformance  Guidance MVCR:  (TBF) 
+2.  Conformance Guidance MVCR:  (TBF) 
 
-* For general use on websites for existing consent: legacy website based consent, context can vary widely depending on the METHOD of Collection and the sensitivity of the PI the MVCR encorporates the minimum MVCR and adds additonal MUST reequirements. 
+* For general use on websites for existing consent: legacy website based consent, context can vary widely depending on the METHOD of Collection and the sensitivity of the PI the MVCR encorporates the minimum MVCR requirements and adds additonal MUST reequirements. 
 
 * Baseline Use Case: MVCR for existing consent online (website based enrolment) (see Alice and Bob)
 
@@ -413,7 +412,7 @@ An agreed baseline of MUSTS and SHOULDS, that are used to illustrate Conformance
 | __Privacy Policy:__ | [ACME Privacy Policy](https://www.acme.fictional.url/privacy.policy) |
 
 ##### Guidance Notes
-* PI Controller - that is accountable for compliance over the management of PII, A PII in ISO 29100 (for explicit consent) controller determines why (purpose) and how (means) the processing of PII takes place. The PII controller shall ensure adherence to the privacy principles during the processing of PII under its control (e.g., by implementing the necessary privacy controls). There may be more than one PI(I) controller for the same PI(I) set or set of operations performed upon PI(I). In this case the different PI(I) controllers SHOULD be listed for MINIMUM MVCR, MUST be listed for Explicit CONSENT SHARING .
+* PI Controller - that is accountable for compliance over the management of PII, A PII in ISO 29100 (for explicit consent) controller determines why (purpose) and how (means) the processing of PII takes place. The PII controller shall ensure adherence to the privacy principles during the processing of PII under its control (e.g., by implementing the necessary privacy controls). There may be more than one PI(I) controller for the same PI(I) set or set of operations performed upon PI(I). In this case the different PI(I) controllers SHOULD be listed in the MVCR, MUST be listed for Explicit CONSENT SHARING .
 * Contact informantion used should be proportional to the method of collection and context.  All contact infomratin should be verifiable at the point of reciept provision
 * On Behalf - is used to delegate data controller and or data processing, which maps to the UK's as acting on behalf of the data controller, a third party analytics service would be a processor on behalf of the controller.  When the site operator is acting on behalf of the Data Controller
 * Contact Name - in some jurisdictions the name of the person responsible for processing PII is required
@@ -450,7 +449,7 @@ An agreed baseline of MUSTS and SHOULDS, that are used to illustrate Conformance
   | PI Attributes | St, Name, City, Country Postal Code |
   | PI Confidentiality Level | low | 
   | Sensitive Data | No | 
-  | Sensitive information category | Not Applicable to MINIMUM MVCR | 
+  | Sensitive information category | Not Applicable for Implied Consent (MVCR) | 
   
   The example below is for an on-line pharmacy that provides a delivery service
 
@@ -523,9 +522,9 @@ MINIMUM MVCR Requirements
 * Conformance for MVCR requires a minimum of: contact information, proportional linking, and minimum viable purpose specification
 
 ## 6.3 Explicit Consent (TBF After MINIMUM MVCR)
-* (Note: The more explicit the consent record and receipt the more machine readable it becomes.)
+* (Note: The more explicit the consent record and receipt the more machine readable it should become.)
 * All Sensitive Information Categories require Explicit Consent 
-* All the requirements of the previous +  additional fields for the receipt to be deemed explicit for PII in ISO 29100
+* All of the requirements of the previous +  additional fields for the receipt to be deemed explicit for PII in ISO 29100
 *  explicit consent: "Guidelines for Notification, Consent and Choice in Online Services for Consumers" which  http://www.meti.go.jp/press/2014/10/20141017002/20141017002a.pdf (which can be found translated on the Kanatar WIKI - http://tinyurl.com/explicit-guide )
 
 FIELD CONFORMANCE: EXPLICIT MVCR 
@@ -546,12 +545,13 @@ FIELD CONFORMANCE: EXPLICIT MVCR
 * Psycho/Social/Belief
 * Membership to Union
 * Other
-- Criminal/Justice
+- Criminal/Justice (UK)
+
 
  (not usable for MINIMUM MVCR) Sharing sensitive personal information, is actively regulated and requires explicit consent by all OECD FIPPs based regulations, and for trade of information and technology between jurisdictions.  Use of this field is subject to regulatory requirements.  (Notes:  This field provides the normative baseline for binding practice to laws and standards within an Open Consent.  This category is specified, but also flexible so that it can expand to authoritative decisions about new categories and the definition of existing category, like the GDPR which requires consent to be both :  “explicit”  and evidenced by “a statement or by a clear affirmative action” ref GDPR - Doc )
 
  (Editors Notes: out-of-scope of the MINIMUM MVCR )
-* field is optional, unless for compliance then it is required and linked to authoritative notice, references, and scopes) - these are further specified by jurisdictional legislation, terminology.  Even so,  there are common sensitive data categories for personal information which are enforceable, listed here;  The listing of a sensitive data category in this field indicates that this receipt links to requirements for binding  compliance claims. TBF post v0.8 draft )
+* field is optional, unless for compliance then it is required and linked to authoritative notice, references, and scopes - these are further specified by jurisdictional legislation, terminology.  Even so,  there are common sensitive data categories for personal information which are enforceable, listed here;  The listing of a sensitive data category in this field indicates that this receipt links to requirements for binding  compliance claims. TBF post v0.8 draft )
 
 * Sensitive PI Categories  can be further utilized by linking authoritative requirements to the receipt in a way that can be proportionally validated to context.  Providing a context mechanism for trust elevation that can be effectively programed by policy. ( editors note) Which is an inherent requirement for IOT i.e. video surveillance and trust.
 
@@ -559,7 +559,7 @@ FIELD CONFORMANCE: EXPLICIT MVCR
 
 * Note: The use of these features make compliance claims when used
 
-Note:  The receipt MUST be selected as explicit consent, as well as determine the functional notice and consent requirements to be compliant.  These can then be used to specify the such the 'other' field MUST NOT be present when the explicit consent type is selected.  Requirements are supplied by jurisdiction and industry and is out-of-scope of the MINIMUM MVCR consent receipt specification.)
+Note:  The receipt MUST be selected as explicit consent, as well as determine the functional notice and consent requirements to be compliant.  These can then be used to specify the such the 'other' field MUST NOT be present when the explicit consent type is selected.  Requirements are supplied by jurisdiction and industry and is out-of-scope of the MVCR  implied consent receipt specification.)
 
 ## 6.4  compliance UK (example of compliance requirements) (TBF)
 
