@@ -47,12 +47,13 @@ This document is subject to the [Kantara IPR Policy - Option Patent & Copyright:
 	* 5.6.	Scope(s)
 6. MVCR Conformance and Compliance
 	* 6.1 Global Guidance 
-	* 6.2 MINIMUM MVCR Conformance Guidance & Example 
+	* 6.2 MVCR (online)
 	* 6.3 EXPLICIT MVCR (TBF)
 	* 6.4 COMPLIANT MVCR (TBF) 
 7. Appendix A: ISO Terms - mapping and use in the MVCR
 8. Appendix B: Consent Type -
 9. Appendix C: Purpose Categories (or purpose type)
+10. Appendix D: JSON Example and Demo V0.7 Consent Receipt Generaor 	
 
 (editors note: added objective and scope to the specification)
 
@@ -75,17 +76,17 @@ Viable, in this scope, means a record of consent that can be retained and used s
 ### 2.2 MVCR Modes of Conformance 
 
 The term 'minimum' in the MVCR refers to the least amount of data required to make a consent receipt;  open, explicit and compliant consent record viable for a number of different contexts, defined by:
-* A) MINIMUM MVCR - Defned by the PI Controller, implied and self-asserted 
+* A) MVCR - Defned by the PI Controller, implied and self-asserted 
 * B) Explicit MVCR -  is  in reference to  ISO 29100 Framework section 4, defined by being a machine readable Explicit consent
 * C) Compliant MVCR - Explicit consent mapped to notice and consent regulatory requirements and privacy controls; Typically Trust frameworks and trust network operators 
 
-The receipt has the Consent Type field in which the scope can be defined as 'MINIMUM MVCR (Implied)' 'Explicit', 'Compliant' , Consent Type.   
+The receipt has the Consent Type field in which the scope can be defined as ' MVCR (or Implied MVCR)' 'Explicit MVCR', 'Compliant MVCR' , Consent Type.   
 
-MINIMUM MVCR is intended to map to all legacy types of implied or expressed consent and has no compliance claims besides proof of consent.  Providing flexibility for implementation and adoption without the burden of legal compliance obligations for the implementor. (see conformance table) A consent type can be created as a profile and externally reference trust frameworks.  i.e. UST Defined Consent Type
+ MVCR is used to create implied consent record reciepts. The MVCR  has no compliance claims besides proof of consent.  Providing flexibility for implementation and adoption without the burden of legal compliance obligations for the implementor. (see conformance table) A consent type can be created as a profile and externally reference trust frameworks.  i.e. UST Defined Consent Type
 
-For the MINIMUM MVCR ONLY goto section 6.2. MINIMUM MVCR CONFORMANCE, GUIDEANCE & EXAMPLE
+For the  MVCR ONLY goto section 6.2.2  MVCR (alice & bob) CONFORMANCE, GUIDEANCE & EXAMPLE
 
-(Editors Note: v0.8 has  discussed and is close to a consensus for MINIMUM MVCR, which has been the focus of the consent receipt generator (http://api.consentreceipt.org) and the testing for drafting this v0.8.  (put in URL of Kantara demo - here )
+(Editors Note: v0.8 has been discussed and is close to a consensus for MVCR for general online use.  , which has been the focus of the consent receipt generator (http://api.consentreceipt.org) and the testing for drafting this v0.8.  (put in URL of Kantara demo - here )
 
  v0.8 (this draft) meets the requirement of providing a Minimum MVCR, but also the specification for the maximum MVCR. I,e. The most explicit a consent receipt could be.
 
@@ -363,15 +364,17 @@ The Examples and guidance for common forms of MINIMUM MVCR
 
 | timestamp | alice@subject.com | Bob bob@bob.com |   verbal consent  |@bob | Not Sensitive | NO 3rd Party Sharing | Privacy Policy Read at point of Consent | 
 
-2.  MVCR:  Consent Receipts (TBF) 
+2.  Conformance  Guidance MVCR:  (TBF) 
 
-* For BOB and Alice Use Case: legacy website based consent, context can vary widely depending on the METHOD of Collection and the sensitivity of the PI the MVCR encorporates the minimum and adds additonal MUST reequirements. 
+* For general use on websites for existing consent: legacy website based consent, context can vary widely depending on the METHOD of Collection and the sensitivity of the PI the MVCR encorporates the minimum MVCR and adds additonal MUST reequirements. 
 
-* Use Case: MVCR: existing consent online (website based enrolment)
+* Baseline Use Case: MVCR for existing consent online (website based enrolment) (see Alice and Bob)
+
+An agreed baseline of MUSTS and SHOULDS, that are used to illustrate Conformance
 
 | - MUST - | -  Consent Type, Collection Method, Service Name, Purpose Category, PI Controller, Core Purpose, Link to PP, Proportional Contact, Date & Time, Sensitive Y/N, Sharing Y/N,  Principal ID, Sensitive  Information y/n, 3rd Party Sharing y/n |
 | __SHOULD__ | - Jurisdiction,  Purpose Termination, |
-| __OPTIONAL__ |  PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing Contract, Sharing, Scope(s)
+| __OPTIONAL__ | Sensitive PI, PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing Contract, Sharing, Scope(s)
 | MAY |
 | MUST NOT | Sensitive Personal Information Categories | 
 
@@ -394,7 +397,7 @@ The Examples and guidance for common forms of MINIMUM MVCR
 * Collection Method : provides an indication of the context, additional fields are appropriate for different contexts.  For instance on websites, digital fields are data collected is expected to be reflected on the receipt. (see should fields)
 * Consent ID: this is the identifier for the specific consent
 * Principal ID: is the primary personal information (PI)  identifier for linking automatic processing, which is normally volunteered and chosen by the principal.
-* Additional Should Fields Are included as proportional to method of collection.
+* Additional Should Fields Are included to applied in proportion to context of use and method of collection.
 
 ##### PI Controller Data Example ####
 
@@ -414,9 +417,10 @@ The Examples and guidance for common forms of MINIMUM MVCR
 * Contact informantion used should be proportional to the method of collection and context.  All contact infomratin should be verifiable at the point of reciept provision
 * On Behalf - is used to delegate data controller and or data processing, which maps to the UK's as acting on behalf of the data controller, a third party analytics service would be a processor on behalf of the controller.  When the site operator is acting on behalf of the Data Controller
 * Contact Name - in some jurisdictions the name of the person responsible for processing PII is required
-* Contact Address - (if different from location of consent) 
-* Contact Email
-* Contact Phone
+* Contact Address - (of processor(s) ) 
+* Contact Email - the direct email to contact regarding the consent - DPO, CPO, administrator
+* Contact Phone - voice enquiries 
+* Contact Other - alternative contact -i.e. @twittername
 * privacy policy link - The privacy policy link is to the current policy, if there are materials changes to this policy then a new consent is required for sensitive data categories and various trust network requirements. (note: can be used for compliance- privacy policy can be attached to the receipt payload.
   
   #### Purpose Specification Example ####
@@ -431,14 +435,14 @@ The Examples and guidance for common forms of MINIMUM MVCR
   | Consent Renewal | Core Function | Renewal of Consent with Renewal to Contract | Agreed to Changes in Purpose |  when account deleted | 
 
   #### Guidance on Purpose(s)
-   Repeat the  creation of purpose, attached to a purpose category or not,  set of fields as many times as necessary to set out the purpose(s) for collection
+   Repeat the  creation of purpose, attached to a purpose category or not,  these set of fields as many times as necessary to set out the purpose(s) and preferneces for data collection and use
 
   * **Purpose Preference**
     -  is a secondary purpose that is not core to the service, which can be turend on and off without withdrawing consent for the service.   A preference SHOULD correspond to a sharing scope  and linked to termination of purpose;
 
   * **Purpose Termination** - defines the duration of consent and/or its condition of termination.  Purpose Preference and Purpose termination are designed to be used in tandem and are put into Scope(s) Section (if machine readability is required)
 
-  #### PII Example(s) ####
+  #### PI(I) Example(s) ####
  
   | Field Name | Example |
   | --- | --- | 
@@ -457,7 +461,7 @@ The Examples and guidance for common forms of MINIMUM MVCR
   | __Health__ | Personal Health Information| True | HIGH | Specified by regulation in many jurisdictions |
   | __Financial__ | Credit Card or payment information | True | HIGH | Specified by regulation in many jurisdictions |
 
-  ### Guidance
+  ### Guidance PI 
   * ** PI Categories **
   - These are specified by industry and jurisdiction, but, we have a common list of PI Categores in Appendix C
 
@@ -465,7 +469,7 @@ The Examples and guidance for common forms of MINIMUM MVCR
   * 	These are the data attributes that are combined to create a category or data set. i.e.  first and last name of PII Principal, = Name.  PI Attributed can further be defined by permission, i.e. restricted access, read only, do not share, do not track, etc.
 
   * **Sensitive Data Y/N**
-    This is a yes/no question:  can be used for MVCR lite conformance  for non-explicit consent only - which mean its not used for compliance, in this context the "other" field is used to specify sensitivity.
+    This is a yes/no question:  can be used for MVCR but for non-explicit consent only - which mean its not used for explicit or compliant MVCR's, in this context the "other" field is used to specify sensitivity.
 
     
     #### 3rd Party Sharing Example
@@ -478,14 +482,14 @@ The Examples and guidance for common forms of MINIMUM MVCR
     | __Financial__ | Tax Authority  | Required by Law Enforcement or Government | Financial institution required to disclose personal financial information for tax purposes |
     | Marketing Accountant Services  | Accountant Network |  Contact Details | Marketing Third Parties - Ad supported web site |
 
-**Note:** PII provided to vendors or suppliers to the PII Controller that are providing data processing services of PII to the PII Controller would not normally be considered disclosure or information sharing |
+**Note:** (John) PII provided to vendors or suppliers to the PII Controller that is providing data processing services of PII to the PII Controller would not normally be considered disclosure or information sharing |
 
     #### Sharing 3rd Party Guidance
     
     * Repeat the set of fields as many times as necessary to identify third parties
-    * Termination of Sharing - includes duration, location, specified time,
-    * (note: is sharing a proxy a security concern? )
-    * *Note:** PII provided to vendors or suppliers to the PII Controller that are providing data processing services of PII to the PII Controller would not normally be considered disclosure or information sharing |
+    * Termination of Sharing - includes duration, location, specified time, other
+    * note (John) : is sharing a proxy or a security concern? 
+    * *Note:**  (John) PII provided to vendors or suppliers to the PII Controller that are providing data processing services of PII to the PII Controller would not normally be considered disclosure or information sharing |
     
     ####  Scope Example
     
@@ -675,9 +679,8 @@ Other purposes may be uses as appropriate for the specific context of each juris
 - 14.	Membership – (Political, trade union affiliations, any other opt-in organisational/group membership data - third party organisations only. Includes name of employer when not held by employer. Could extend to online platform membership. Some might be more sensitive than others – may want a separate category)
 - 15.	Behavioural – (Any data about the behaviour, habits or movements of an individual - electronic or physical. Location, browser/search history, web page usage (analytics), energy usage (smart meters), login history, calendar data, etc.)
 
-
-4.4 ### JSON Demonstrator:  (editors note: review for input into V0.8 required) 
-JSON example used for testing and developing from v0.7 to v0.8
+4.4 APPENDIX D ### JSON Demonstrator:  (editors note: normative for MVCR ALPHA V0.7 ) - update required) 
+JSON example used for testing and developing conformance v0.7 to v0.8  
 
 A demonstration version of the MVCR can be found on the [Example Consent Receipt Generator (CRG)](https://mvcr.herokuapp.com/) page. The example site also contains [API documentation](https://mvcr.herokuapp.com/doc/). This server contains a consent receipt generation API. The API consists of a single endpoint at [http://www.consentreceipt.org/mvcr/api](http://www.consentreceipt.org/mvcr/api). This endpoint accepts HTTP POST requests with input in the form of JSON (application/json) documents and returns output in the form of a signed JSON Web Token (application/jwt). The example site consists of two pages:
 
@@ -686,7 +689,6 @@ A demonstration version of the MVCR can be found on the [Example Consent Receipt
 * A page for API Documentation and examples at [http://api.consentreceipt.org/doc/](http://api.consentreceipt.org/doc/)
 
 The API takes in a JSON document describing the consent transaction for which the receipt is to be generated. This object includes artifacts such as the presiding jurisdiction for the consent action, an identifier for the party consenting. The output of the API is a signed JSON Web Token (JWT) whose payload consists of all of the input data as well as several additional fields. The output JWT is signed by the server using the RS256 algorithm defined in JSON Web Signatures. The server's public key is published in JSON Web Key format at: http://www.consentreceipt.org/api
-
 
 ### JSON Field Table
 This is included above as column for all fields. But data fields are optional.
