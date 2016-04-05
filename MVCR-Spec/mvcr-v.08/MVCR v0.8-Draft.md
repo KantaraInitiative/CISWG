@@ -1,4 +1,4 @@
-# Minimum Viable Consent Receipt (MVCR) for a Consistent Record of Consent #
+# Minimum Viable Consent Receipt (MVCR): for a Consistent Record of Consent #
 
 | Document Information  | |
 | ------	| ------	|
