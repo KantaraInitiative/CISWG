@@ -18,7 +18,6 @@ This specification identifies the consent requirements necessary to record a per
 
 The MVCR is designed to address existing closed consent that exists today, often defined by a binary and indefinite consent agreement. Closed Consent is addressed by providing both a common specification for recording consent and provision of a consent receipt for the use and sharing of personal information.   As the  consent receipt is required to be provisioned at point of consent, this addresses multiple privacy principle and privacy legal requirements.  A consistent consent record provides a framework for binding a consent notice to a privacy control (i.e. Do Not Track), operationally useful to technically address multiple Fair Information Practice Principles and likewise maps PII management to ISO 29100 privacy framework.
 
-Consent for the use of personal information is a precursor to providing this consent to Terms and Services.
 
 See Appendix A:
 (ref- FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice") are fundamental privacy principles, addressed with this specification.
