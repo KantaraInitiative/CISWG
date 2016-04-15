@@ -16,9 +16,11 @@
 
 This specification identifies the consent requirements necessary to record a personal information (PI) sharing transaction and provide this record as an independent receipt.
 
-The MVCR is designed to address existing closed consent that exists today, often defined by a binary and indefinite consent agreement. Closed Consent is addressed by providing both a common specification for recording consent and provision of a consent receipt for the use and sharing of personal information.   As the  consent receipt is required to be provisioned at point of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
+The provision of a record of a consent with valid contact information is what is defined in this specification as Open Consent.
+  
+The BASIC MVCR provides an open consent format to not only Open Consent, but also to provide proof of consent, and enable consistent consent practices for dynamic consent  (change consent preferences and withdraw consent).   As the  consent receipt is required to be provisioned at point of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
 
-A  consent receipt format provides a framework for binding a consent notice to a privacy control (i.e. Do Not Track), operationally useful to technically address multiple Fair Information Practice Principles and likewise map PII management to ISO 29100 privacy framework.
+A consent receipt is used as a framework to bind policy to privacy controls (i.e. Do Not Track) that people can themselves administer.  Operationally useful to technically address multiple Fair Information Practice Principles and likewise map PII management to ISO 29100 privacy framework.
 
 # Status of this document
 The v0.8 draft is a  MVCR specification candidate - this draft version is for peer review and not meant for distribution.
@@ -35,19 +37,19 @@ This document is subject to the [Kantara IPR Policy - Option Patent & Copyright:
 	* 2.1. MVCR Modes of Conformance]
 3. Notational Conventions For Conformance
 4. Terminology
-6. MVCR Conformance and Compliance
-	* 6.1 Global Guidance
-	* 6.2 MVCR (online)
-	* 6.3 EXPLICIT MVCR (TBF)
-	* 6.4 COMPLIANT MVCR (TBF)
-5. MVCR R Fields
+5. MVCR Record Format: Section & Fields
 	* 5.1. Header
 	* 5.2 PI Controller Data
 	* 5.3 Purpose Specification
 	* 5.4.	Personally Identifiable Information
 	* 5.5.	Information Sharing
 	* 5.6.	Scope(s)
-7. Appendix A: MVCR V2: ISO Terms and Compliant Consent
+6. MVCR Conformance and Compliance
+	* 6.1 Global Guidance
+	* 6.2 MVCR (online)
+	* 6.3 EXPLICIT MVCR (TBF)
+	* 6.4 COMPLIANT MVCR (TBF)
+7. Appendix A: ISO Terms - mapping and use in the MVCR
 8. Appendix B: Consent Type -
 9. Appendix C: Purpose Categories (or purpose type)
 10. Appendix D: JSON Example and Demo V0.7 Consent Receipt Generator
@@ -66,20 +68,18 @@ The term 'minimum' in the MVCR refers to the least amount of fields required to 
 
 In MVCR v1,
 * A) General Use MVCR - Defined by the PI Controller, implied and self-asserted
-
-MVCR v2 -(see Appendix A)
-* B) Explicit MVCR - machine readable Explicit consent - in reference to conformance with ISO 29100 Framework section 4,
+MVCR v2 - (see Appendix A for more information)
+* B) Explicit MVCR - machine readable Explicit consent - in reference to conformance with ISO 29100 Framework (section 4)
 * C) Compliant MVCR - Explicit consent mapped to notice and consent regulatory requirements and privacy controls;
 
-The receipt has the Consent Type field, which can be externally defined, but, is defined by default ' Implied' 'Explicit', 'Opt-Out', Consent Type.
+The receipt has the Consent Type field, which can be externally defined, but, is defined by default as: 'Implied', 'Explicit', 'Opt-Out', 'Externally defined Consent Type'.
 
 Not IN Scope
   The General MVCR conformance profile is intended to provide flexibility for implementation and easier adoption by not having the burden of legal compliance obligations for the implementor.  The MVCR v1 is not to be used for specifying sensitive personal data and compliance claims besides proof of consent.
 
-The extensions for conformance to explicit consent and for meeting compliance requirements are at various levels of spec review and testing by the WG.   (see conformance table Appendix A)
+The extensions for conformance to laws and to explicit consent are at various levels of spec review and testing by the WG.   (see conformance table Appendix A)
 
- v0.8 (this draft) meets the requirement of providing a General Use MVCR, while also enabling the development a consistent consent framework for personal data control.
-
+v0.8 (this draft) meets the requirement of providing a BASIC MVCR, while also enabling the development a consistent 'consent framework' for personal data control.
 
 ### 3 Notational Conventions for Conformance
 
