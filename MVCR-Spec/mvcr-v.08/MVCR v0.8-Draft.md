@@ -177,7 +177,7 @@ Terminology herein leverages where possible,  [ISO/IEC 29100:2011 "Information T
 
   ## 5. MVCR Guidance
 
-The MVCR inherently provides consent and notice, it can be used to provide a single purpose, and it can be used to specify purpose preferences.
+The MVCR inherently provides proof of consent and enough notice to communicate about consent, in order for a receipt to be valid.
   * The act of provisioning a receipt with valid and proportionally linked contact information is what effectively opens consent, and this start with BASIC MVCR consent receipt profile.
   * Providing a consent receipt constitutes proof of consent.
   * All conformance profiles culminate, in that the BASIC MVCR is used to create an EXPLICIT MVCR conformance profile, and or a COMPLIANT MVCR, all of these profiles are then useful to specify the operational policy and technical SCOPE(s) of the consent (if required).
