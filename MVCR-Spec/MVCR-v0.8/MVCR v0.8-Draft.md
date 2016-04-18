@@ -14,13 +14,11 @@
 
 # Abstract
 
-This specification identifies the consent requirements necessary to record a personal information (PI) sharing transaction and provide this record as an independent receipt.
+This specification identifies the consent requirements necessary to record a personally identifiable information (PII) sharing transaction and provide this record as an independent receipt.
 
-This specification references and selects regulation and requirements from multiple jurisdictions to harmonize the requirements to provision a record of a consent as a receipt with valid contact information.
+A receipt not only opens consent for people, but it also provides proof of consent and enables consistent consent practices.   As the  consent receipt is required to be provisioned at point of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
 
-The MVCR requires an open consent receipt to not only Open Consent for people, but also to provide proof of consent, and enable consistent consent practices with dynamic consent.   As the  consent receipt is required to be provisioned at point of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
-
-A consent receipt is used as a framework to bind policy to privacy controls (i.e. Do Not Track) that people can themselves administer.  Operationally useful to technically address multiple Fair Information Practice Principles and likewise map PII management to ISO 29100 privacy framework.
+A consent receipt and a common format for recording and communicating about consent establishes a framework to bind policy to privacy controls (i.e. Do Not Track) that people can themselves administer.  Operationally useful to demonstrate compliance with multiple Fair Information Practice Principles and likewise map PII management to ISO 29100 privacy framework.
 
 # Status of this document
 The v0.8 draft is a  MVCR specification candidate - this draft version is for peer review and not meant for distribution.
@@ -29,7 +27,6 @@ The v0.8 draft is a  MVCR specification candidate - this draft version is for pe
 Copyright (c) 2016 Kantara and the persons identified as the document authors. All rights reserved.
 
 This document is subject to the [Kantara IPR Policy - Option Patent & Copyright: Reciprocal Royalty Free with Opt-Out to Reasonable and Non-discriminatory (RAND)](https://kantarainitiative.org/confluence/download/attachments/2293776/Kantara%20Initiative%20IPR%20Policies%20_V1.1_.pdf?version=1&modificationDate=1244488630000&api=v2)[HTML version](https://kantarainitiative.org/confluence/pages/viewpage.action?pageId=41025689)
-
 
 ## Table of Contents
 1. Objective
@@ -42,10 +39,10 @@ This document is subject to the [Kantara IPR Policy - Option Patent & Copyright:
 * 5.2 MVCR EXAMPLE
 * 5.3  Conformance Field Table
 6. Appendix A:
-	* 6.1 MVCR Conformance and Compliance
-	* 6.2 EXPLICIT MVCR (TBF)
-	* 6.3 4COMPLIANT MVCR (TBF)
-	* 6.4 ISO Terms - mapping and use in the MVCR
+* 6.1 MVCR Conformance and Compliance
+* 6.2 EXPLICIT MVCR (TBF)
+* 6.3 4COMPLIANT MVCR (TBF)
+* 6.4 ISO Terms - mapping and use in the MVCR
 8. Appendix B: Consent Type
 9. Appendix C: Purpose Categories (or purpose type)
 10. Appendix D: JSON Example and Demo V0.7 Consent Receipt Generator
@@ -53,107 +50,93 @@ This document is subject to the [Kantara IPR Policy - Option Patent & Copyright:
 (editors note: added objective and scope to the specification)
 
 ## 1.Objective
-	This specification identifies the common consent requirements to record and provision an independent record of consent in the form of a receipt to the individual.
+This specification identifies the common consent requirements to record and provision an independent record of consent in the form of a receipt to the individual.
 
 ### 2.Scope
-	This scope includes how to present the receipt fields in a receipt, the timing of the record, linking fields to external information, how to present the record fields, the data_type and order of fields.
+This scope includes how to present the receipt fields in a receipt, the timing of the record, linking fields to external information, how to present the record fields, the data_type and order of fields.
 
-	Viable, in this scope, means a record of consent that can be retained and used separately by both issuer (PI Controller) and recipient (PI Principal) as proof of consent.
+Viable, in this scope, means a record of consent that can be retained and used separately by both issuer (PI Controller) and recipient (PI Principal) as proof of consent.
 
-	The term 'minimum' in the MVCR refers to the least amount of fields required to make a viable consent receipt  for a number of different contexts;
+The term 'minimum' in the MVCR refers to the least amount of fields required to make a viable consent receipt  online. 
 
-In MVCR v1,
-	* A) General Use MVCR - Defined by the PI Controller, implied and self-asserted
-	MVCR v2 - (see Appendix A for more information)
-	* B) Explicit MVCR - machine readable Explicit consent - in reference to conformance with ISO 29100 Framework (section 4)
-	* C) Compliant MVCR - Explicit consent mapped to notice and consent regulatory requirements and privacy controls;
+### Not In Scope
+The MVCR conformance profile is intended to provide flexibility for implementation and easier adoption by not having the burden of explicit legal compliance obligations for the implementor.  The MVCR v1 is not to be used for specifying sensitive personal data as these requires explicit legal reference.  (See Appendix A for sensitive personal data)
 
-	The receipt has the Consent Type field, which can be externally defined, but, is defined by default as: 'Implied', 'Explicit', 'Opt-Out', 'Externally defined Consent Type'.
+* The extensions for conformance to laws and to explicit consent are at various levels of spec review and testing by the WG.   (see conformance table Appendix A)
 
-Not IN Scope
-  The General MVCR conformance profile is intended to provide flexibility for implementation and easier adoption by not having the burden of legal compliance obligations for the implementor.  The MVCR v1 is not to be used for specifying sensitive personal data and compliance claims besides proof of consent.
+* v0.8 (this draft) meets the requirement of providing a baseline MVCR, while also enabling the development of a consistent 'consent framework' for personal data control.
 
-	* The extensions for conformance to laws and to explicit consent are at various levels of spec review and testing by the WG.   (see conformance table Appendix A)
+### 3. Notational Conventions for Conformance ###
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://www.rfc-editor.org/info/rfc2119).
 
-	* v0.8 (this draft) meets the requirement of providing a BASIC MVCR, while also enabling the development a consistent 'consent framework' for personal data control.
-
-### 3 Notational Conventions for Conformance
-	The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](http://www.rfc-editor.org/info/rfc2119).
-
-### 4.  Terminology ###
-	Terminology herein leverages where possible,  [ISO/IEC 29100:2011 "Information Technology -- Security techniques -- Privacy Framework"](http://standards.iso.org/ittf/PubliclyAvailableStandards/c045123_ISO_IEC_29100_2011.zip).
-
-* **Consent Notice**
- 	Refers to a notice that is required to inform the consentor what they are consenting too, without it consent is not possible, the quality and usability of the consent notice is what is often used to classify if a consent is legally informed or not, but this varies by jurisdiction context and interpretation.  Consent notices can vary from icons, short notices, direct communication, visceral notice and most often online a policy like terms of service and privacy policy.
-
-* **Consent Receipt (CR)**
-	 A record of a personal information consent transaction provided to the PI Principle at the time of Consent.
-
-* **Explicit Consent**
-	 Refers to explicit action taken by users in which consent is expressed, but, it is also in reference to explicitly stated purpose.  I.e. A box was ticked, or an 'I agree' button pressed in relation to listed purpose or purpose category. In this specification, explicit elements can be extended i.e. by an explicit reference to  authoritative policy and operational scope.
-
-* **Non-Explicit Consent**
-  (includes self-asserted and externally defined consent type), MVCR Lite Mode demonstrates   receipt  conformance with the MVCR, but is limited to conformance, and makes no compliance claims, but can demonstrate conformance with MVCR using defined consent types.
-
-* **Explicit Consent Reference**
-	Is best described as a directly linked field  to a function, law, or authoritative policy ; consent regulation, privacy principles, other consent standards, or industry best practices.
-
-* **EXPRESS Consent**
-	Refers to the context of a PI Principal making an un-ambigous agreement  to consent.  It is conceivable, in the context of this specification, that a consent can be  expressed  and contain explicit consent references to also be compliant  (see council of Europe 5.4.4 https://goo.gl/JGPX2Y)
-
-* **Explicit Purpose:**
-    A term used to reference how a purpose is specified,  each purpose is contained in a purpose category and is  explicit if it coincides with a consent for that specific purpose category.   i.e.  a  single purpose with a single check box.
-
-* **Explicit 3rd Sharing:**
-    The degree  that sharing is specified can be explicit.  In the specification, the sharing purpose category SHOULD be listed, as well as the the third party at a minimum. But, this can further be explicitly specified with options that include sharing contract, preference, and termination fields, which are beyond minimum requirements.
-
-* **Individual**
-	   see PII Principal in ISO/IEC 29100:2011.
-
-* **Linked**
-	In this specification, this means that there is a field that linked to an external source, icon, and or reference structure.
+### 4. Terminology ###
+Terminology herein leverages where possible,  [ISO/IEC 29100:2011 "Information Technology -- Security techniques -- Privacy Framework"](http://standards.iso.org/ittf/PubliclyAvailableStandards/c045123_ISO_IEC_29100_2011.zip).
 
 * **3rd Party Sharing**
-	   A statement or series of statements that set out what information is shared with third parties and for what purpose(s).
+A statement or series of statements that set out what information is shared with third parties and for what purpose(s).
+
+* **Consent Notice**
+ Refers to a notice that is required to inform the consentor what they are consenting too, without it consent is not possible, the quality and usability of the consent notice is what is often used to classify if a consent is legally informed or not, but this varies by jurisdiction context and interpretation.  Consent notices can vary from icons, short notices, direct communication, visceral notice and most often online a policy like terms of service and privacy policy.
+
+* **Consent Receipt (CR)**
+A record of a personal information consent transaction provided to the PI Principle at the time of Consent.
+
+* **Explicit Consent**
+Refers to explicit action taken by users in which consent is expressed, but, it is also in reference to explicitly stated purpose.  I.e. A box was ticked, or an 'I agree' button pressed in relation to listed purpose or purpose category. In this specification, explicit elements can be extended i.e. by an explicit reference to  authoritative policy and operational scope.
+
+* **Non-Explicit Consent**
+(includes self-asserted and externally defined consent type), MVCR Lite Mode demonstrates   receipt  conformance with the MVCR, but is limited to conformance, and makes no compliance claims, but can demonstrate conformance with MVCR using defined consent types.
+
+* **Explicit Consent Reference**
+Is best described as a directly linked field  to a function, law, or authoritative policy ; consent regulation, privacy principles, other consent standards, or industry best practices.
+
+* **Express Consent**
+Refers to the context of a PI Principal making an un-ambigous agreement  to consent.  It is conceivable, in the context of this specification, that a consent can be  expressed  and contain explicit consent references to also be compliant  (see council of Europe 5.4.4 https://goo.gl/JGPX2Y)
+
+* **Explicit Purpose:**
+A term used to reference how a purpose is specified,  each purpose is contained in a purpose category and is  explicit if it coincides with a consent for that specific purpose category.   i.e.  a  single purpose with a single check box.
+
+* **Explicit 3rd Sharing:**
+The degree  that sharing is specified can be explicit.  In the specification, the sharing purpose category SHOULD be listed, as well as the the third party at a minimum. But, this can further be explicitly specified with options that include sharing contract, preference, and termination fields, which are beyond minimum requirements.
+
+* **Individual**
+see PII Principal in ISO/IEC 29100:2011.
 
 * **Minimum Viable Consent Receipt (MVCR)**
-	   Is a record of consent provided to the person providing consent for personal information sharing as a receipt.
+Is a record of consent provided to the person providing consent for personal information sharing as a receipt.
 
 * **OPT-OUT Consent**
-	An example of 3 types of consent currently defined. Opt-Out is implied consent mechanism online that is used for an array of purpose specifications.
+An example of 3 types of consent currently defined. Opt-Out is implied consent mechanism online that is used for an array of purpose specifications.
 
 * **Personal Information (PI)**
-	   See Personally Identifiable Information (PII) in ISO/IEC 29100:2011
+See Personally Identifiable Information (PII) in ISO/IEC 29100:2011
 
 * **Personally Identifiable Information (PII)**
-    Personally identifiable information (PII), is defined in ISO/IEC 29100:2011.  The abbreviation PII is widely accepted in OECD base FIPPs jurisdiction, but the phrase it abbreviates has four common variants based on personal / personally, and identifiable / identifying. Not all are equivalent, and for legal purposes the operational definitions can vary depending on the specific purposes for which the term is being used. the term used more often is "personal information", which may be somewhat broader.  The specification, is able to reference PII Purpose Category directly to regulation, and in the context of identifiability for EXPLICIT consent.
+Personally identifiable information (PII), is defined in ISO/IEC 29100:2011.  The abbreviation PII is widely accepted in OECD base FIPPs jurisdiction, but the phrase it abbreviates has four common variants based on personal / personally, and identifiable / identifying. Not all are equivalent, and for legal purposes the operational definitions can vary depending on the specific purposes for which the term is being used. the term used more often is "personal information", which may be somewhat broader.  
 
-    "4.4 : To determine whether or not an individual should be considered identifiable, several factors need to be taken into account. In particular, account should be taken of all the means which can reasonably be used by the entity holding the data, or by any other party to identify that individual on the basis of the given information."  From ISO:29100, additional clarification available ...
+"4.4 : To determine whether or not an individual should be considered identifiable, several factors need to be taken into account. In particular, account should be taken of all the means which can reasonably be used by the entity holding the data, or by any other party to identify that individual on the basis of the given information."  From ISO:29100, additional clarification available ...
 
-   " Treatment of PII is distinct from other types of data because it needs to be not only protected, but also collected, maintained, and disseminated in accordance with Federal law." NIST 800-222
+"Treatment of PII is distinct from other types of data because it needs to be not only protected, but also collected, maintained, and disseminated in accordance with Federal law." NIST 800-222
 
 * **PI Principal**
-   natural person to whom the PI relates, is used for explicit consent in which the person is identified, Principal ID,  is the primary (often principal choses) identifier for linking automatic processing to a persona, and/or collection of attributes provided at point of consent, which are used to identify the PI Subject are shared.
-
-* **PI PRINCIPAL** (duplicate review)
-	 refers to the personal data shared by a person to an organisation for which the individual provides consent for PI use.   See PII Principal in in ISO/IEC 29100:2011, also data subject (EC directive), consenter, PII PRINCIPLE in NIST 800, this refers to person providing their own personal information.
+Natural person to whom the PI relates, is used for explicit consent in which the person is identified with the field 'Principal ID'. This is the primary identifier for linking automatic processing to a persona, and/or collection of attributes provided at point of consent, which are used to identify the PI Subject are shared.  See PII Principal in in ISO/IEC 29100:2011, also data subject (EC directive), consenter, PII PRINCIPLE in NIST 800.
 
 * **PII Confidentiality Impact Levels**
-  These refer to low, medium, high confidentiality, or Not Applicable; which correspond to NIST controls sp800-122 and can be use for the organisation, the individual and the developer to ascertain on scale the level of risk and security.
+Defined by low, medium, high or not applicable confidentiality; which correspond to NIST controls sp800-122 and can be use for the organisation, the individual and the developer to ascertain on scale the level of risk and security required.
 
 * **Purpose Specification**
-	A statement or series of statements that set out the purpose(s) for which PII has been collected.
-  In the MVCR the purpose is intended to specify the context of use.
+A statement or series of statements that set out the purpose(s) for which PII has been collected.  In the MVCR the purpose is intended to specify the context of use.
 
 * **Context of Use**
-  Organisations should evaluate the context of use to provide the purpose for which the PI is collected, stored, used, processed, disclosed, or disseminated.  The context of use may cause the same PI data elements to be assigned different PII confidentiality impact levels based on their use.  For example, suppose that an organization has two lists that contain the same PI fields (e.g., name, address, phone number).  The first list is people who subscribe to a general-interest newsletter produced by the organization, and the second list is people who work undercover in law enforcement.  If the confidentiality of the lists is breached, the potential impacts to the affected individuals and to the organization are significantly different for each list.
+Organisations should evaluate the context of use to provide the purpose for which the PI is collected, stored, used, processed, disclosed, or disseminated.  The context of use may cause the same PI data elements to be assigned different PII confidentiality impact levels based on their use.  For example, suppose that an organization has two lists that contain the same PI fields (e.g., name, address, phone number).  The first list is people who subscribe to a general-interest newsletter produced by the organization, and the second list is people who work undercover in law enforcement.  If the confidentiality of the lists is breached, the potential impacts to the affected individuals and to the organization are significantly different for each list.
 
 * **Sensitive Personal Information (PI) Categories**
-  All Sensitive Information Categories require Explicit Consent
-  Out of scope of the MVCR - See 6.5. Explicit Consent
+
 
 * **Sensitive PI Categories**
-    (Use only for Explicit Consent: used in MVCR for creating compliance claims)
+
+This is a common list of sensitive PI categories, although, their are additional categories for different jurisdictions. 
+
   * Health
   * Financial
   * Child Data
@@ -164,104 +147,102 @@ Not IN Scope
   * Membership to Union
   * Other
 
-  ## 5. MVCR Guidance
+## 5. MVCR Guidance
 
-The MVCR inherently provides proof of consent and enough notice to communicate about consent, in order for a receipt to be valid.
-  * The act of provisioning a receipt with valid and proportionally linked contact information is what effectively opens consent, and this start with BASIC MVCR consent receipt profile.
-  * Providing a consent receipt constitutes proof of consent.
-  * All conformance profiles culminate, in that the BASIC MVCR is used to create an EXPLICIT MVCR conformance profile, and or a COMPLIANT MVCR, all of these profiles are then useful to specify the operational policy and technical SCOPE(s) of the consent (if required).
-  * All of the record fields should be presented with the consent receipt label fields on the receipt which is viewable by the receipt recipient.
-  * The receipt can be provisioned in any manner that is feasible or expected in according to the context.
-  * Proportionally refers to the context (or medium) of the consent, method of collection, and to how the fields are linked .
-  * If it is verbal (aka a Handshake), then a written receipt with a phone number to the PI Controller is sufficient to make a minimal MVCR for that context.
-  * If it is an online consent, like the normative Bob & Alice website use case, then additional (SHOULD) fields are a (MUST) in order to verify the claims in a BASIC MVCR
-  * Different context have different expectations, and these expectations should be documented and managed by policy and reflected in the receipt.
-  * Basic receipt is ideal for not only proof of consent but dynamic consent, optional extensibility for making consent more explicit and enable users to withdraw consent preferences. (as well as consent)
+The MVCR inherently, by being an open consent receipt, provides proof of consent and contact information to communicate about consent. 
 
-  ### 5.1 MVCR
-  The MVCR for (online) conformance requirements are intended to make a consistent receipt and to provide people with this receipt as to make this record Open in both; a common format and common practice.  As a result it is a requirement that the individual have a record of the consent. The receipt can be used by the individual to validate, communicate and manage the consent after consent is provided.
+* The act of provisioning a receipt with valid and proportionally linked contact information is what effectively opens consent and make a digital Minimum Viable Consent Receipt that can be used online.  
+* Providing a consent receipt constitutes proof of consent.
+* All conformance profiles culminate, in that the BASIC MVCR is used to create an EXPLICIT MVCR conformance profile, and or a COMPLIANT MVCR, all of these profiles are then useful to specify the operational policy and technical SCOPE(s) of consent for information sharing (if required).
+* All of the record fields should be presented with the consent receipt label fields on the receipt which is viewable by the receipt recipient.
+* The receipt can be provisioned in any manner that is feasible or expected in according to the context.
+* Proportionally refers to the context (or medium) of the consent, method of collection, and to how the fields are linked .
+* If it is verbal (aka a Handshake), then a written receipt with a phone number to the PI Controller is sufficient to make an open consent receipt (or a MVCR for that context).
+* If it is an online consent, like the normative Bob & Alice website use case, then additional (SHOULD) fields are a (MUST) in order to verify the claims MVCR.  For instance jurisdiction is not required in person.
+* Different context have different expectations, and these expectations should be documented and managed by policy and reflected in the receipt.
+* Basic receipt is ideal for not only proof of consent but dynamic consent, optional extensibility for making consent more explicit and enable users to withdraw consent preferences.
 
-	###	Consent for Information Sharing
-	The MVCR (online) is designed to make it easy to specify 3rd party information sharing.  A full consent receipt specifies the purpose, identities, communication channel, preferences, and online consent for information sharing
+### 5.1 MVCR
+The MVCR profile is for normalised  (online) conformance requirements are intended to make a consistent receipt and to provide people with this receipt as to make this record Open in both; a common format and common practice.  As a result it is a requirement that the individual have a record of the consent. The receipt can be used by the individual to validate, communicate and manage the consent after consent is provided.
 
-  ### Out of Scope
-  The (online) MVCR is used to provide a consent receipt that does not define sensitive personal information categories and is not used for compliance with out specific and explicit reference to laws and scope.
+###	Consent for Information Sharing
+The MVCR baseline digital consent receipt is designed to make it easy to specify 3rd party information sharing. 
 
-  For sensitive, compliant, and standards based definition of explicit refer to Appendix A.
+### Out of Scope
+The (online) MVCR is used to provide a consent receipt that does not define sensitive personal information categories and is not used for compliance with out specific and explicit reference to laws and scope.
 
-Conformance terms
-  To achieve conformance for a particular consent context, the MUST, SHOULD, and OPTIONAL fields extend to accommodate method of collection.
+For sensitive, compliant, and standards based definition of explicit refer to Appendix A.
 
-  Conformance The MUST Requirements for the MVCR is to Open Consent:
-  * 1. Provide Proof of Consent in form of a dated Consent Receipt with purpose specified
-  * 2. Provide Contact details to the PI Principal to communicate about, and manage, consent once it is provided.  Contact information MUST be proportionate to the method of collection and directly linked so as to be accessible in the context of consent provision for validation.
+###  MVCR V.1 (Minimum Viable Consent Receipt)
 
-  Without providing details about what is sensitive, the basic consent receipt has a low risk of liability and provides enhanced consent once implemented.  The MVCR (online) V.1 is not intended for regulatory compliance without explicit referencing.
+The MVCR is used to create online/digital consent receipts that provides transparency over personal data control.  The MVCR is a specification for creating an open standard for dynamic consent preferences and proof of consent.  MVCR V.2 is the extension of MVCR for processing sensitive personal information and providing consent receipts with compliance claims that meet international standards.
 
-###  MVCR FIELD CONFORMANCE:
-
-The MVCR is for (online) consent receipt fields are used to define consent and sharing with more granularity. To communicate between  PI Principle and PI Controller, between marketing and people.  The required fields are for the consent to be open, the remaining fields are required by context, law, operational requirement.
+The MVCR V.1 is for (online) consent receipt fields that are used to define consent and information sharing with more granularity and to enable communication between PI Principle and PI Controller.
 
 The MVCR (online) provides baseline guidance for digital and networked consent.  The baseline is comprised of MUST'S and SHOULD'S, OPTIONAL, REQUIRED, etc, that are used to illustrate Conformance with an MVCR being open and online.
 
-* Baseline Use Case: MVCR for existing consent online (digital consent) (see Kantara Beta Signup)[https://kantarainitiative.org/beta-signup/]
-	* Context can vary widely depending on the METHOD of Collection and the sensitivity of the PI.
+Open Consent is achieved by :
+* 1. Provide Proof of Consent in form of a dated Consent Receipt with purpose specified
+* 2. PI Controller contact details to the PI Principal to communicate about, and manage, consent once it is provided.  
 
-  | - MUST - | -    Date & Time, Jurisdiction, Principal ID, Collection Method, PI Controller, Linked Contact, Linked PP, Purpose Termination, Core Purpose,  Consent Preference, Consent Type,
-  | __SHOULD__ | -  Service Name, 3rd Party Sharing Y/N, Purpose Category,
-  | __OPTIONAL__ | Sensitive PI Y/N, PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing PI Controller Contact, Sharing, Scope(s)
-  | MAY |
-  | MUST NOT | Sensitive Personal Information Categories |
+Contact information MUST be proportionate to the method of collection and directly linked so as to be accessible in the context of consent provision for validation by the recipient.
+
+Without providing the categories of sensitive data collected, the MVCR has a low risk of liability and provides enhanced consent once implemented.  The MVCR (online) V.1 is not intended for regulatory compliance, or for sensitive personal information without explicit referencing.
+
+* Baseline: MVCR for existing consent online (digital consent) (see Kantara Beta Signup)[https://enterhere.com/]
+* Context can vary widely depending on the METHOD of Collection and the sensitivity of the PI.
+
+| __MUST__ | - Date & Time, Jurisdiction, Principal ID, Collection Method, PI Controller, Linked Contact, Linked PP, Purpose Termination, Core Purpose, Consent Preference, Consent Type,
+| __SHOULD__ | -  Service Name, 3rd Party Sharing Y/N, Purpose Category,
+| __OPTIONAL__ | Sensitive PI Y/N, PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing PI Controller Contact, Sharing, Scope(s)
+| MUST NOT | Sensitive Personal Information Categories |
 
 ##### Example MVCR (online)
 
 #####  Header Example
 
-  | Field | Contents|
-  | ------:	| ------	|
-  | __Jurisdiction:__ | CA |
-  | __Consent Time Stamp:__ | 2016/02/08 12:20:34 EST |
-  | __Collection Method:__ | web form | [http://www.consentreceipt.org](http://www.consentreceipt.org) |
-  | __Consent ID:__ | C159A448-A69B-44BF-BFCE-6403FB5D06EE |
-  | __Principal ID :__ | [roadrunner@fictional.url](mailto:roadrunner@fictional.url) |
+| Field | Contents|
+| ------:	| ------	|
+| __Jurisdiction:__ | CA |
+| __Consent Time Stamp:__ | 2016/02/08 12:20:34 EST |
+| __Collection Method:__ | web form | [http://www.consentreceipt.org](http://www.consentreceipt.org) |
+| __Consent ID:__ | C159A448-A69B-44BF-BFCE-6403FB5D06EE |
+| __Principal ID :__ | [new@member.com](mailto:new@member.com) |
 
-  ##### PI Controller Data Example ####
+##### PI Controller Data Example ####
+| Field | Contents|
+| ------:	| ------	|
+| __Data Controller:__ | Kantara Initiative |
+| __On Behalf :__ | null |
+| __Contact Name:__ | DPO-Consent Kantara |
+| __Contact Address:__ | 401 Edgewater Place, Suite 600, Wakefield, MA  01880,  |
+| __Contact Email:__ | [dpo@kantarainitiative.org](dpo@kantarinitiative.org) |  | __Contact Phone:__ | |
+| __Contact Other:__ | Fax +1 781-623-3094 |
+| __Privacy Policy:__ | [Privacy Policy](https://kantarainitiative.org/confluence/display/GI/Privacy+Policy) |
 
-  | Field | Contents|
-  | ------:	| ------	|
-  | __Data Controller:__ | Kantara Initiative |
-  | __On Behalf :__ | null |
-  | __Contact Name:__ | DPO-Consent Kantara |
-  | __Contact Address:__ | 123 Main Street, Somewhere Else |
-  | __Contact Email:__ | [dpo@kantarainitiative.org](dpo@kantarinitiative.org) |
-  | __Contact Phone:__ | +1 555 555-1212 |
-  | __Contact Other:__ | @KantaraInitiative |
-  | __Privacy Policy:__ | [Privacy Policy](https://kantarainitiative.org/confluence/display/GI/Privacy+Policy) |
-
-  #### Purpose & PII Example(s) ####
+#### Purpose List & PII Example List ####
 	| Service | Purpose | _PI Category_ | _Consent Type:__ | Purpose Category | Purpose Preference | Purpose Termination |
-	| ------ | ------ | :------: | :------: | :------: | :------: |
+	| ------ | ------ | :------: | :------: | :------: | :------: | :------: |
 	| CISWG | Authority to sign Participation Agreement | Biographical, Address | Explicit | Sign up for Work Group | NO | Link to Policy |
-	| CISWG | Voting Status | Explicit | Yes  | Voting | Yes |
-	| CISWG | Agree to IPR Policy | Explicit |  when leave location  | NO |
-	| CISWG | Consent to
+	| CISWG | Voting Status | Explicit | Yes  | Voting | Yes | |
+	| CISWG | Agree to IPR Policy | Explicit |  when leave location  | NO | | | 
 
-	#### 3rd Party Sharing Example
+#### 3rd Party Sharing Example
 	| Service | Third Party | Type of Consent to Share | What is Shared | Sharing Purpose | Termination |
 	| Kantara Website | Google analytics, |  implied | Website Access | non PII | link to Google Policy |
-	|	Kantara Wiki | confluence cookie, wordpress cookie | implied | website functionality | Terminates end of Session |
-	| CISWG WIKI | Implied | PI BIO, Mailing List | post membership to wiki, public mailing list archive | link to membership termination |
+	|	Kantara Wiki | wordpress cookie | implied | website functionality | Terminates end of Session |
+	|	Kantara Wiki | confluence cookie | implied | website functionality | Terminates end of Session |
+	| CISWG WIKI |  Work Group Rositer |  Implied | Email, Name Affiliation | workgroup membership | link to membership termination |
 
-  ####  Scope Example
+####  Scope Example
   | Scope  | Purpose | PI Category | Scope Reference (linked) | Scope Description | Confidentiality |
   | ------ | ------ | :------: | :------: | :------: | :------: | :------: |
   | Technical | create account | biographical |   administration  |  CISWG member account  | Low |
 	| Policy | Consent to transfer data to US | biographical | administration | CISWG Member Account |
 
+## 6. MVCR Field Table
 
-## 5. MVCR Fields and Description
-
-The MVCR is broken down into 6 sections for usability and to aid in understanding the core function.
+The MVCR is broken down into 6 sections for usability and to aid in understanding the core functions.
 
 The 6 sections are:
 
@@ -328,7 +309,7 @@ This section specifies personal information categories, attributes, PI confident
 
 ### 5.5 3rd Party Sharing (TBF)
 
-The purpose of this section is to provide the PII Subject with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties can be specified, using purpose and at the minimum the purpose categories for the sharing of PI.
+The purpose of this section is to provide the PI Principle with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties can be specified, using purpose and at the minimum the purpose categories for the sharing of PI.
 
 | Receipt Field Label | Receipt Field Format | Data Field Name | Data Type | Example Data Input | Receipt Field Description | Purpose of Field  | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -346,19 +327,15 @@ The purpose of this section is to provide the PII Subject with information about
 
 # 5.4  Conformance Table
 
-  (move to appendix a)
-  As a result, iterative changes or consent preferences can be recorded on consent transaction level and with consent based change management, as long as it is linked to the original consent, and iteratively logged.
+This  table specifies requirements to fulfill conformance for each mode as defined. MVCR is for all types of implied and mixed consent contexts.
+Sensitive MVCR is for sensitive personal information, which require explicit consent 
+COMPLIANT MVCR is for specific privacy controls as defined by regulation and/or policy
 
-This  table specifies requirements to fulfill conformance for each mode as defined.
- MVCR is for all types of implied and mixed consent contexts.
-EXPLICIT MVCR is for standardised consent contexts
-COMPLIANT MVCR is for specific privacy controls as defined by regulation or policy
-
-| Field # | Field Name | Open Consent | __MVCR__ | Explicit/Machine Readable MVCR | COMPLIANT MVCR UK |
+| Field # | Field Name | Open Consent | __MVCR__ | Sensitive MVCR | COMPLIANT MVCR UK |
 | ------ | ------ | -----| :------: | :------: | :------: |
 | 1 | _Jurisdiction_ | SHOULD | MUST | MUST | MUST |
 | 2 | _Consent Time Stamp_ | MUST |   MUST | MUST | MUST |
-| 3 | _Consent Type_ | SHOULD | MUST | MUST | MUST |
+| 23 | Sensitive Data Y/N | SHOULD | SHOULD | MUST | MUST |
 | 4 | _Collection Method_ | SHOULD | MAY | MUST | MUST  |
 | 5 | _Consent ID_ | SHOULD | MUST | MUST |  MUST |
 | 6 | _PI Principal ID_ | MUST | MUST | MUST | MUST|
@@ -372,56 +349,41 @@ COMPLIANT MVCR is for specific privacy controls as defined by regulation or poli
 | 14 | _Privacy Policy_ | MUST |  MUST | MUST | MUST |
 | 15 | Service | SHOULD | MUST |  MUST | MUST  | MUST |
 | 16 | Purpose | MUST | MUST | MUST | MUST | MUST |
+| 3 | _Consent Type_ | SHOULD | MUST | MUST | MUST |
 | 17 | Purpose Category |SHOULD | MUST | MUST | N/A |
 | 18 | Purpose Preference (Y/N) | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 | 19 | Purpose Termination/Duration/Renewal | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 | 20 | PI Category | MUST | MUST | MUST | MUST | MUST |
-
-| 22 | PI Confidentiality Level | OPTIONAL | OPTIONAL |  OPTIONAL | OPTIONAL | OPTIONAL |
-| 23 | Sensitive Data Y/N | SHOULD | SHOULD | MUST | MUST |
-| 24 | Sensitive Information Category | N/A | MUST NOT | MUST | MUST |
 | 25 | 3rd Party Sharing Y/N | SHOULD | MUST | MUST | MUST |
 | 26 | Third Party | SHOULD | SHOULD | SHOULD | SHOULD |
 | 27 | Sharing Purpose | OPTIONAL | MUST |  | | |
-| 28 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 | 29 | Scope(s) | OPTIONAL | OPTIONAL | MUST | MUST |
 
+6. Appendix A: MVCR V.2
+
+The MVCR (Minimum Viable Consent Receipt) is used to create consent receipts that puts people in the control of personal data.  The MVCR is a specification for creating an open standard for dynamic consent and proof of consent.  MVCR V.2 is the extension of MVCR for processing sensitive personal information and providing consent receipts with compliance claims.
+
+Additional Fields Proposed
 | 21 | PI Attribute(s) | MAY | |  | | |
+| 22 | PI Confidentiality Level | OPTIONAL | OPTIONAL |  OPTIONAL | OPTIONAL | OPTIONAL |
+| 24 | Sensitive Information Category | N/A | MUST NOT | MUST | MUST |
+| 28 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 
-## 4.1. All Fields
+(move to appendix a)
+As a result, iterative changes or consent preferences can be recorded on consent transaction level and with consent based change management, as long as it is linked to the original consent, and iteratively logged.
 
-6. Appendix A:
-	* 6.1 MVCR Conformance and Compliance
-	* 6.2 EXPLICIT MVCR (TBF)
-	* 6.3 4COMPLIANT MVCR (TBF)
-	* 6.4 ISO Terms - mapping and use in the MVCR
+* 6.1 MVCR Conformance and Compliance
 
-
-(IN Progress - completed once - fields drafted)
-
-## 4.2. Appendix A: ISO 29100 Terminology
-
-At the outset of the MVCR it was the intention to move, if possible, this specification to ISO, as well, it was recognized that
-
->> ISO/IEC 29100:2011 ...provides a privacy framework which can be leveraged in reference to:
->>
->> * specifies a common privacy terminology;
->> * defines the actors and their roles in processing personally identifiable information (PII);
->> * describes privacy safeguarding considerations; and
->> * provides references to known privacy principles for information technology.
->>
-
+MVCR V.2 provides the  
+* 6.2 SENSITIVE MVCR (TBF)
+* 6.3 COMPLIANT MVCR (TBF)
+* 6.4 ISO Terms - mapping and use in the MVCR
 ISO/IEC 29100:2011 is applicable to natural persons and organizations involved in specifying, procuring, architecting, designing, developing, testing, maintaining, administering, and operating information and communication technology systems or services where privacy controls are required for the processing of PII."
 
-Although, through the spec work it has become apparent that we can borrow from ISO,  this specification needs to have within it a specific terminology that is independent of other specifications.  Even so, we adopted Personal Information (rather Personal Data) and like decisions to increase interoperability of this work with this framework.  Similarily, where possible all fields and terms are referenced.  as well, Here in lies the mapping of terminology and components.
-
-(put in table here mapping elements of MVCR Spec to ISO 29100)
 (ref- FIPPs and  (ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice") are fundamental privacy principles, addressed with this specification.
 (editors note:  - how should this be referenced and linked? )
 
-
-
-## 4.2. Appendix B: Purpose Categories
+## 7. Appendix B: Purpose Categories
 
 The list below contains a list of purposes for which Personally Identifiable Information (PII) has been collected, based on input from subject matter experts. This list is neither normative, in that none of these are required purposes in any given context, nor complete, in that each purpose for each collection by each entity is contextually specific. This list is provided for convenience and demonstration purposes. It is the case that in many jurisdictions, the entity collecting PII for identified primary purposes may not use that same information without the consent of the PII Subject for secondary purposes, unless required to do so by law, and it is the case that the PII Subject should be able to deny consent for secondary purposes while still receiving core functions from the site, application or service.
 
@@ -446,7 +408,7 @@ The list below contains a list of purposes for which Personally Identifiable Inf
 
 Other purposes may be uses as appropriate for the specific context of each jurisdiction and the site, application or service.
 
-## 4.3. Appendix C: Categories of Personal Data (explainers/examples)
+## 4.3. Appendix C: Categories of Personal Data (explainers/examples only)
 
 - 1.	Biographical – (General information like Name, DOB, Family info (mother’s maiden name), marital status. Historical data like educational achievement, general employment history.)
 - 2.	Contact – (Address, Email, Telephone Number, etc.)
@@ -455,7 +417,7 @@ Other purposes may be uses as appropriate for the specific context of each juris
 - 5.	Network/Service – (Login ids, usernames, passwords, server log data, IP addresses, cookie-type identifiers)
 - 6.	Health – (Ailments, treatments, family doctor info. X-rays and other medical scan data)
 - 7.	Financial – (This includes information such as bank account, credit card data. Income and tax records, financial assets/liabilities, purchase/sale of assets history.)
-- 8.	Official/Government Identifiers – (This includes any widely recognised identifiers that link to individual people. Examples include National Insurance, ID card, Social security, passport and driving licence numbers, NHS number (UK). Just the numbers rather than data associated with them.)
+- 8.	Official/Government Identifiers – (This includes any widely recognised identifiers that link to individual people. Examples include National Insurance, ID card, Social security, passport and driving license numbers, NHS number (UK). Just the numbers rather than data associated with them.)
 - 9.	Social Services/Welfare – (Welfare and benefits status and history)
 - 10.	Judicial – (Criminal and police records, inc. traffic offenses.)
 - 11.	Property/Asset – (Identifiers of property – license plate numbers, MAC addresses for mobiles, other device identifiers. Not financial assets. Could include digital assets like ebook and digital music data)
@@ -464,7 +426,7 @@ Other purposes may be uses as appropriate for the specific context of each juris
 - 14.	Membership – (Political, trade union affiliations, any other opt-in organisational/group membership data - third party organisations only. Includes name of employer when not held by employer. Could extend to online platform membership. Some might be more sensitive than others – may want a separate category)
 - 15.	Behavioural – (Any data about the behaviour, habits or movements of an individual - electronic or physical. Location, browser/search history, web page usage (analytics), energy usage (smart meters), login history, calendar data, etc.)
 
-4.4 APPENDIX D ### JSON Demonstrator:  (editors note: normative for MVCR ALPHA V0.7 ) - update required)
+## 4.4 APPENDIX D ### JSON Demonstrator:  (editors note: normative for MVCR ALPHA V0.7 ) - update required)
 JSON example used for testing and developing conformance v0.7 to v0.8
 
 A demonstration version of the MVCR can be found on the [Example Consent Receipt Generator (CRG)](https://mvcr.herokuapp.com/) page. The example site also contains [API documentation](https://mvcr.herokuapp.com/doc/). This server contains a consent receipt generation API. The API consists of a single endpoint at [http://www.consentreceipt.org/mvcr/api](http://www.consentreceipt.org/mvcr/api). This endpoint accepts HTTP POST requests with input in the form of JSON (application/json) documents and returns output in the form of a signed JSON Web Token (application/jwt). The example site consists of two pages:
