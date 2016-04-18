@@ -31,7 +31,7 @@ This document is subject to the [Kantara IPR Policy - Option Patent & Copyright:
 ## Table of Contents
 1. Objective
 2. Scope
-	* 2.1. Not in Scope
+* 2.1. Not in Scope
 3. Notational Conventions For Conformance
 4. Terminology
 5. MVCR 
@@ -129,7 +129,7 @@ A statement or series of statements that set out the purpose(s) for which PII ha
 Organisations should evaluate the context of use to provide the purpose for which the PI is collected, stored, used, processed, disclosed, or disseminated.  The context of use may cause the same PI data elements to be assigned different PII confidentiality impact levels based on their use.  For example, suppose that an organization has two lists that contain the same PI fields (e.g., name, address, phone number).  The first list is people who subscribe to a general-interest newsletter produced by the organization, and the second list is people who work undercover in law enforcement.  If the confidentiality of the lists is breached, the potential impacts to the affected individuals and to the organization are significantly different for each list.
 
 * **Sensitive Personal Information (SPI) Categories**
-
+(TBF)
 
 * **Sensitive PI Categories**
 
@@ -202,6 +202,7 @@ Without providing the categories of sensitive data collected, the MVCR has a low
 | __Collection Method:__ | web form | [http://www.consentreceipt.org](http://www.consentreceipt.org) |
 | __Consent ID:__ | C159A448-A69B-44BF-BFCE-6403FB5D06EE |
 | __Principal ID :__ | [new@member.com](mailto:new@member.com) |
+| __Sensitive:__| N |
 
 ##### PI Controller Data Example ####
 | Field | Contents|
@@ -356,20 +357,26 @@ COMPLIANT MVCR is for specific privacy controls as defined by regulation and/or 
 
 The MVCR (Minimum Viable Consent Receipt) is used to create consent receipts that puts people in the control of personal data.  The MVCR is a specification for creating an open standard for dynamic consent and proof of consent.  MVCR V.2 is the extension of MVCR for processing sensitive personal information and providing consent receipts with compliance claims.
 
-Additional Fields Proposed
+
+
+Consent Logging
+Requirements for sensitive personal data require the logging of consent changes, explicit consent, that is machine readable. 
+
+As a result, iterative changes or consent preferences can be recorded on consent transaction level and with consent based change management, as long as it is linked to the original consent, and iteratively logged.
+
+* 6.1 MVCR v.2 Conformance and Compliance
+
+MVCR V.2 provides the  
+* 6.2 SENSITIVE MVCR (TBF)
+* Additional Fields Proposed
 | 21 | PI Attribute(s) | MAY | |  | | |
 | 22 | PI Confidentiality Level | OPTIONAL | OPTIONAL |  OPTIONAL | OPTIONAL | OPTIONAL |
 | 24 | Sensitive Information Category | N/A | MUST NOT | MUST | MUST |
 | 28 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 
-(move to appendix a)
-As a result, iterative changes or consent preferences can be recorded on consent transaction level and with consent based change management, as long as it is linked to the original consent, and iteratively logged.
-
-* 6.1 MVCR Conformance and Compliance
-
-MVCR V.2 provides the  
-* 6.2 SENSITIVE MVCR (TBF)
 * 6.3 COMPLIANT MVCR (TBF)
+* Mapping regulation to receipt notice, funciton, policy and trust frameworks. 
+
 * 6.4 ISO Terms - mapping and use in the MVCR
 ISO/IEC 29100:2011 is applicable to natural persons and organizations involved in specifying, procuring, architecting, designing, developing, testing, maintaining, administering, and operating information and communication technology systems or services where privacy controls are required for the processing of PII."
 
