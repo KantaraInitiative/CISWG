@@ -221,24 +221,23 @@ Without providing the categories of sensitive data collected, the MVCR has a low
 | __Privacy Policy:__ | [Privacy Policy](https://kantarainitiative.org/confluence/display/GI/Privacy+Policy) |
 
 #### Purpose List & PII Example List ####
-	| Service | Purpose | _PI Category_ | _Consent Type:__ | Purpose Category | Purpose Preference | Purpose Termination |
-	| ------ | ------ | :------: | :------: | :------: | :------: | :------: |
-	| CISWG | Authority to sign Participation Agreement | Biographical, Address | Explicit | Sign up for Work Group | NO | Link to Policy |
-	| CISWG | Voting Status | Explicit | Yes  | Voting | Yes | |
-	| CISWG | Agree to IPR Policy | Explicit |  when leave location  | NO | | | 
+| Service | Purpose | _PI Category_ | _Consent Type:__ | Purpose Category | Purpose Preference | Purpose Termination |
+| ------ | ------ | :------: | :------: | :------: | :------: | :------: |
+| CISWG | Authority to sign Participation Agreement | Biographical, Address | Explicit | Sign up for Work Group | NO | Link to Policy |
+| CISWG | Voting Status | Explicit | Yes  | Voting | Yes | |
+| CISWG | Agree to IPR Policy | Explicit |  when leave location  | NO | | | 
 
 #### 3rd Party Sharing Example
-	| Service | Third Party | Type of Consent to Share | What is Shared | Sharing Purpose | Termination |
-	| Kantara Website | Google analytics, |  implied | Website Access | non PII | link to Google Policy |
-	|	Kantara Wiki | wordpress cookie | implied | website functionality | Terminates end of Session |
-	|	Kantara Wiki | confluence cookie | implied | website functionality | Terminates end of Session |
-	| CISWG WIKI |  Work Group Rositer |  Implied | Email, Name Affiliation | workgroup membership | link to membership termination |
+| Service | Third Party | Type of Consent to Share | What is Shared | Sharing Purpose | Termination |
+| ------ | ------ | :------: | :------: | :------: | :------: |
+| Kantara Website | Google analytics, |  implied | Website Access | non PII | link to Google Policy |
+| CISWG WIKI |  Public |  Implied | Email, Name Affiliation | workgroup membership | link to membership termination |
 
 ####  Scope Example
-  | Scope  | Purpose | PI Category | Scope Reference (linked) | Scope Description | Confidentiality |
-  | ------ | ------ | :------: | :------: | :------: | :------: | :------: |
-  | Technical | create account | biographical |   administration  |  CISWG member account  | Low |
-	| Policy | Consent to transfer data to US | biographical | administration | CISWG Member Account |
+| Scope  | Purpose | PI Category | Scope Reference (linked) | Scope Description | Confidentiality |
+| ------ | ------ | :------: | :------: | :------: | :------: | 
+| Technical | create account | biographical |   administration  |  CISWG member account  | Low |
+| Policy | Consent to transfer data to US | biographical | administration | CISWG Member Account | Low |
 
 ## 6. MVCR Field Table
 
