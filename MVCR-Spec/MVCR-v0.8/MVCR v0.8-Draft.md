@@ -3,7 +3,7 @@
 | Document Information  | |
 | ------	| ------	|
 | Version: | 1.0 Draft 0.8 |
-| Date: | March 6, 2016 |
+| Date: | April 18, 2016 |
 | Editors: | Mark Lizar |
 | Contributors: |
 | |	John Wunderlich |
