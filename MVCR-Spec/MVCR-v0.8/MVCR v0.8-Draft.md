@@ -16,9 +16,11 @@
 
 This specification identifies the consent requirements necessary to record consent for a personal information sharing transaction and provide this record as an independent receipt.  Much like a transaction receipt mapped the price of a product or service to payment. The receipt effectively maps and links the legal, social and contextual elements to a record of consent.
 
-As a result the consent receipt not only opens consent for people, but it also provides proof of consent and enables consistent consent practices.   The  consent receipt is required to be provisioned at point of consent to the person providing consent.  By putting the individual at the centre of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
+As a result the consent receipt not only opens consent for people, but it also provides proof of consent and enables consistent consent practices.   The  consent receipt is required to be provisioned at point of consent to the person providing consent.  In this way, its like a reverse cookie, it enables people to track their own data and who is using it.
 
-A consent receipt and a common format for recording and communicating about consent establishes a framework to bind policy to privacy controls that people can themselves administer.  Operationally useful to demonstrate compliance with multiple Fair Information Practice Principles and likewise map PII management to ISO 29100 privacy framework.
+By putting the individual at the centre of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
+
+A consent receipt and a common format for recording and communicating about consent establishes a framework to bind policy to privacy controls that people can themselves administer.  Operationally demonstrating compliance with multiple Fair Information Practice Principles and likewise map PII management to ISO 29100 privacy framework.
 
 # Status of this document
 The v0.8 draft is a  Consent Receipt v.1 specification candidate - this draft version is for peer review and not meant for distribution.
@@ -39,7 +41,7 @@ This document is subject to the [Kantara IPR Policy - Option Patent & Copyright:
 * 5.2 Consent Receipt v.1 EXAMPLE
 * 5.3  Conformance Field Table
 * 6. Appendix A: Consent Receipt (CR) v2 Sensitive PI: Conformance and Compliance
-* Consent Receipt v2 SENSITIVE Personal Information 
+* Consent Receipt v2 SENSITIVE Personal Information
 * Consent Receipt v2.1 COMPLIANT Consent (TBF)
 * ISO Terms - mapping and use in the Consent Receipt
 * 7. Appendix B: Consent Type
@@ -134,7 +136,7 @@ Organisations should evaluate the context of use to provide the purpose for whic
 
 * **Sensitive PI Categories**
 
-This is a common list of sensitive PI categories, although, their are additional categories for different jurisdictions, and different interpretation of some categories, we have provided a common list and the option to add a specifically defined Sensitive PI type. 
+This is a common list of sensitive PI categories, although, their are additional categories for different jurisdictions, and different interpretation of some categories, we have provided a common list and the option to add a specifically defined Sensitive PI type.
 
   * Health
   * Financial
@@ -144,7 +146,7 @@ This is a common list of sensitive PI categories, although, their are additional
   * Official Identifiers
   * Psycho/Social/Belief
   * Membership to Union
-  * Other 
+  * Other
 
 ## 5. Consent Receipt Guidance
 
@@ -160,24 +162,24 @@ The Consent Receipt inherently, by being a record of consent, provides proof of 
 * Different context have different expectations, and these expectations should be documented and managed by policy and reflected in the receipt.
 * Basic receipt is ideal for not only proof of consent but dynamic consent, optional extensibility for making consent more explicit and enable users to withdraw consent preferences.
 
-### 5.1 Consent Receipt v.1
+### 5.1 Consent Receipt (CR) v.1
 This baseline Consent Receipt profile is for digital receipt conformance  which is intended to make a consistent receipt and to provide people with this receipt as to make the consent Open in both; as a common format and common practice.  As a result it is a requirement that the individual have a record of the consent. The receipt can be used by the individual to validate, communicate and manage the consent after consent is provided.
 
 ### Consent for Information Sharing
 The baseline digital consent receipt is designed to make it easy to specify consent for information sharing with 3rd parties.
 
-###  Consent Receipt V.1 (Minimum Viable Consent Receipt
-The specification process is used to create online/digital consent receipts that provides transparency over personal data control.  The CR is the end result of using this open specification for dynamic consent preferences and proof of consent.  Consent Receipt v2 is the extension of Consent Receipt for processing sensitive personal information and providing consent receipts with compliance claims that meet international standards and regulations.
+###  Consent Receipt V.1 (Minimum Viable Consent Receipt)
+The specification process is used to create online/digital consent receipts that provides transparency over personal data control.  The CR is the end result of using this open specification for dynamic consent preferences and proof of consent.  Consent Receipt v2 is the extension of Consent Receipt v1 for processing sensitive personal information and providing consent receipts with compliance claims that map to standards and regulations.
 
-The Consent Receipt V.1 is for a digital consent receipt and includes fields that are used to define consent and information sharing with more granularity  to enable communication between PI Principle and PI Controller.
+The Consent Receipt V.1 is for a digital consent receipt for personally identifiable information (PII) and includes fields that are used to define consent and sharing of personal information (PI) with more granularity  to enable communication between PI Principle and PI Controller.
 
 The Consent Receipt provides baseline guidance for digital and networked consent.  The baseline is comprised of MUST'S and SHOULD'S, OPTIONAL, REQUIRED, etc, that are used to illustrate Conformance with the Consent Receipt being open and usable digitally.
 
 Open Consent is achieved by :
-* 1. Provide Proof of Consent in form of a dated Consent Receipt with purpose specified
+* 1. Providing Proof of Consent in form of a dated Consent Receipt with purpose specified
 * 2. PI Controller contact details to the PI Principal to communicate about, and manage, consent once it is provided.
 
-Contact information MUST be proportionate to the method of collection and directly linked so as to be accessible in the context of consent provision for validation by the recipient.
+Contact information MUST be proportionate to the method of collection and directly linked so as to be appropriately accessible in the context of consent provision for validation by the recipient.
 
 Without providing the categories of sensitive data collected, the Consent Receipt has a low risk of liability and provides enhanced consent once implemented.  The Consent Receipt V.1 is not intended for regulatory compliance or for sensitive personal information without explicit reference.
 
@@ -353,12 +355,8 @@ COMPLIANT MVCR is for specific privacy controls as defined by regulation and/or 
 
 The MVCR (Minimum Viable Consent Receipt) is a process used to create consent receipts that puts people in the control of personal data.  The Consent Receipt is the resulting specification for utilizing this process for creating an open standard candidate for dynamic consent and proof of consent.  Consent Receipt v2 is the extension of Consent Receipt v1 and focuses on the processing of sensitive personal information and v2.1 focus on  consent receipts with compliance claims, that map laws and notices to demonstrate compliance.
 
-Consent Logging
-Requirements for sensitive personal data require the logging of consent changes, explicit consent, that is machine readable.
 
-As a result, iterative changes or consent preferences can be recorded on consent transaction level and with consent based change management, as long as it is linked to the original consent, and iteratively logged.
-
-* All conformance profiles culminate, in that Consent Receipt v.1 is used to create receipts for sensitive personal information (CR v2 Appendix A) or for COMPLIANCE with an explicit Consent Receipt (v2.1 Appendix A), all of these profiles are then useful to specify the operational policy and technical SCOPE(s) of consent for information sharing (if required).
+* Extending the Consent Receipt involves adding more specific detail.  The Consent Receipt v.1 is used to create receipts for sensitive personal information (CR v2 Appendix A) or for COMPLIANCE with an explicit Consent Receipt (v2.1 Appendix A), all of these profiles are then useful to specify more granular  operational policy and technical SCOPE(s) of consent for information sharing (if required).
 
 * **Consent Receipt (CR) v2 Sensitive PI: Conformance and Compliance**
 
@@ -368,22 +366,24 @@ Consent Receipt V.1 provides the
 | Receipt Field Label | Receipt Field Format | Data Field Name | Data Type | Example Data Input | Receipt Field Description | Purpose of Field  | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | PI attributes | attributes name | attribute | {text=attribute value} |  multiple PI attributes can be added to a purpose category | used to map technical scope  | not linked externally |
-
-Conformance
-| 21 | PI Attribute(s) | N/A | N/A | OPTIONAL | OPTIONAL | OPTIONAL |
-| 22 | PI Confidentiality Level | OPTIONAL | OPTIONAL |  OPTIONAL | OPTIONAL | OPTIONAL |
-| 24 | Sensitive Information Category | N/A | MUST NOT | MUST | MUST |
-| 27 | Sharing Purpose | OPTIONAL | MUST |  | | |
-| 28 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
+| 25 | PI Attribute(s) | N/A | N/A | OPTIONAL | OPTIONAL | OPTIONAL |
+| 26 | PI Confidentiality Level | OPTIONAL | OPTIONAL |  OPTIONAL | OPTIONAL | OPTIONAL |
+| 27| Sensitive Information Category | N/A | MUST NOT | MUST | MUST |
+| 28 | Sharing Purpose | OPTIONAL | MUST |  | | |
+| 29 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 
 * 6.3  Consent Receipt v2.1 for Compliant Consent Receipts (TBF)
 * Mapping regulation to receipt notice, function, policy and trust frameworks.
 
 * 6.4 ISO Terms - mapping and use in the Consent Receipt specification
 ISO/IEC 29100:2011 is applicable to natural persons and organizations involved in specifying, procuring, architecting, designing, developing, testing, maintaining, administering, and operating information and communication technology systems or services where privacy controls are required for the processing of PII."
-
 (ref- FIPPs and  (ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice") are fundamental privacy principles, addressed with this specification.
 (editors note:  - how should this be referenced and linked? )
+
+* 6.5 Consent Logging
+Requirements for sensitive personal data require the logging of consent changes, explicit consent, that is machine readable.
+
+As a result, iterative changes or consent preferences can be recorded on consent transaction level and with consent based change management, as long as it is linked to the original consent, and iteratively logged.
 
 ## 7. Appendix B: Purpose Categories
 
@@ -481,7 +481,7 @@ The following table sets out the fields contained in a JWT that meets the inform
 **Note:** Table incomplete. See [https://mvcr.herokuapp.com/doc/](https://mvcr.herokuapp.com/doc/)
 - 16.	Profile – (Marketing and social segmentation data. Any categorisation that impacts information presented or decisions made about an individual. This might be observed or derived data (algorithmic) or volunteered by the individual. Profile data is often generated from Behavioural data).
 
-## 9. Appendix E: Kantara CISWG Implementation Use Case
+## 9. Appendix E: Kantara CISWG Implementation Use Case (TBF)
 
 The reference implementation for v0.8 draft of the Consent Receipt specification is the  Kantara CISWG demo Implementation for the Work Group sign-up form. The examples in this Consent Receipt specification are taken from this implementation.  https://kantarainitiative.org/beta-signup/
 
@@ -492,17 +492,14 @@ To implement the consent receipt a review was required
 ## Review
 To implement a consent receipt for the Kantara CISWG (Consent & Information Sharing Work Group) The WG Participation agreement.  This agreement on boards the  work group participant to the Consent & Information Sharing Work Group.  
 
-* Review the privacy policy at Kantara, 
+* Review the privacy policy at Kantara,
 * Review at the PI information sharing practices for Kantara WG membership.
 * Review the privacy policy and membership agreement
 * Review existing consent form (if there is one)
-
 
 Privacy Policy Review ( https://kantarainitiative.org/confluence/display/GI/Privacy+Policy)
 * Transfer of personal data to the USA can benefit from consent on the GPA form
 
 WG PI Sharing practices
 * Member data shared on WG WIKI in participation rossiter
-* All post to mailing list are captured in a public achieved 
-
-  
+* All post to mailing list are captured in a public achieved
