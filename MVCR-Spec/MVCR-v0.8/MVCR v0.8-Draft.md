@@ -5,6 +5,7 @@
 | Version: | 1.0 Draft 0.7.9 |
 | Date: | April 18, 2016 |
 | Editors: | Mark Lizar |
+| | Heather Flanagan
 | Contributors: |
 | |	John Wunderlich |
 | |     Justin Richer   |
