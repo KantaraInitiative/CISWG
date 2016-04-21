@@ -5,7 +5,6 @@
 | Version: | 1.0 Draft 0.7.9 |
 | Date: | April 18, 2016 |
 | Editors: | Mark Lizar |
-| | Heather Flanagan
 | Contributors: |
 | |	John Wunderlich |
 | |     Justin Richer   |
@@ -73,7 +72,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 ### 4. Terminology ###
 Terminology herein leverages where possible,  [ISO/IEC 29100:2011 "Information Technology -- Security techniques -- Privacy Framework"](http://standards.iso.org/ittf/PubliclyAvailableStandards/c045123_ISO_IEC_29100_2011.zip).
 
-* **3rd Party Sharing**
+* **PI Sharing**
 A statement or series of statements that set out what information is shared with third parties and for what purpose(s).
 
 * **Consent Notice**
@@ -97,8 +96,8 @@ Refers to the context of a PI Principal making an un-ambigous agreement  to cons
 * **Explicit Purpose:**
 A term used to reference how a purpose is specified,  each purpose is contained in a purpose category and is  explicit if it coincides with a consent for that specific purpose category.   i.e.  a  single purpose with a single check box.
 
-* **Explicit 3rd Sharing:**
-The degree  that sharing is specified can be explicit.  In the specification, the sharing purpose category SHOULD be listed, as well as the the third party at a minimum. But, this can further be explicitly specified with options that include sharing contract, preference, and termination fields, which are beyond minimum requirements.
+* **Explicit 3rd Party Sharing:**
+The degree that sharing is specified can be explicit.  In the specification, the sharing purpose category SHOULD be listed, as well as the the third party at a minimum. But, this can further be explicitly specified with options that include sharing contract, preference, and termination fields, which are beyond minimum requirements.
 
 * **Individual**
 see PII Principal in ISO/IEC 29100:2011.
@@ -167,7 +166,7 @@ The Consent Receipt inherently, by being a record of consent, provides proof of 
 This baseline Consent Receipt profile is for digital receipt conformance  which is intended to make a consistent receipt and to provide people with this receipt as to make the consent Open in both; as a common format and common practice.  As a result it is a requirement that the individual have a record of the consent. The receipt can be used by the individual to validate, communicate and manage the consent after consent is provided.
 
 ### Consent for Information Sharing
-The baseline digital consent receipt is designed to make it easy to specify consent for information sharing with 3rd parties.
+The baseline digital consent receipt is designed to make it easy to specify consent for PI sharing.
 
 ###  Consent Receipt V.1 (Minimum Viable Consent Receipt)
 The specification process is used to create online/digital consent receipts that provides transparency over personal data control.  The CR is the end result of using this open specification for dynamic consent preferences and proof of consent.  Consent Receipt v2 is the extension of Consent Receipt v1 for processing sensitive personal information and providing consent receipts with compliance claims that map to standards and regulations.
@@ -188,7 +187,7 @@ Without providing the categories of sensitive data collected, the Consent Receip
 * Context can vary widely depending on the METHOD of Collection and the sensitivity of the PI.
 
 * | __MUST__ | - Date & Time, Jurisdiction, Principal ID, Collection Method, PI Controller, Linked Contact, Linked PP, Purpose Termination, Core Purpose, Consent Preference, Consent Type,
-* | __SHOULD__ | -  Service Name, 3rd Party Sharing Y/N, Purpose Category,
+* | __SHOULD__ | -  Service Name, PI Sharing Y/N, Purpose Category,
 * | __OPTIONAL__ | Sensitive PI Y/N, PI Categories, Purpose Preference, Confidentiality Level, Sharing Purpose, Sharing PI Controller Contact, Sharing, Scope(s)
 * | _MUST NOT_ | Sensitive Personal Information Categories |
 
@@ -223,7 +222,7 @@ Without providing the categories of sensitive data collected, the Consent Receip
 | CISWG | Voting Status | Explicit | Yes  | Voting | Yes | |
 | CISWG | Agree to IPR Policy | Explicit |  when leave location  | NO | | |
 
-#### 3rd Party Sharing Example
+#### PI Sharing Example
 | Service | Third Party | Type of Consent to Share | What is Shared | Sharing Purpose | Termination |
 | ------ | ------ | :------: | :------: | :------: | :------: |
 | Kantara Website | Google analytics, |  implied | Website Access | non PII | link to Google Policy |
@@ -301,14 +300,14 @@ This section specifies personal information categories, attributes, PII confiden
 | Sensitive Data Y/N | text | yes or no | sensitive | string | Yes | indicates if data is sensitive or not sensitive | used to indicate if consent categories: (see sensitive categories) | should be linked to a notice about what is sensitive |
 | Sensitive Information Category | list of categories with check boxes | sic | string | "Health" | used in the specification to indicate further notice  requirements are needed and the receipt has compliance claims | not linked |
 
-### 5.5 3rd Party Sharing (TBF)
+### 5.5 PI  Sharing (TBF)
 
 The purpose of this section of the consent receipt format is to provide the PI Principle with information about how their information is shared with third parties. In the MVCR this is a Y/N (binary on and off) flag, and if On, then the 3rd parties can be specified, using purpose and at the minimum the purpose categories for the sharing of PI.
 
 | Receipt Field Label | Receipt Field Format | Data Field Name | Data Type | Example Data Input | Receipt Field Description | Purpose of Field  | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 3rd Party Sharing Y/N|  Sharing "" | sharing | string | YES | a yes no flag that indicate if PI is being shared | indicate if sharing is occurring for the purposes specified in the receipt | not linked |
-| Third Party | Name of Organisation (Text) | 3rd_party | string | Bob's Website | Third party that receives the PI | to identify data controller and purpose | SHOULD be Linked |
+| PI Sharing Y/N|  Sharing "" | sharing | string | YES | a yes no flag that indicate if PI is being shared | indicate if sharing is occurring for the purposes specified in the receipt | not linked |
+| Third Party | Name of Organisation (shared publicly)(Text) | 3rd_party | string | Bob's Website | Third party that receives the PI | to identify data controller and purpose | SHOULD be Linked |
 | Sharing Purpose | select from existing purpose or purpose category field input |  sh_purpose | string | core service | to identify reason for sharing | not linked |
 | Sharing Purpose Category | select from existing purpose category field input | sh_purpose_cat | string | core service | to identify expectation  for sharing | not linked |
 | Termination of Sharing | | | |
@@ -317,7 +316,7 @@ The purpose of this section of the consent receipt format is to provide the PI P
 ###  Scope(s)
 |  Scope |  scope name | PI Category | PI Purpose |  PI Preference | Permission | Data Type | Example  Data Input | Scope Description | Scope Purpose  | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- | -- |
-| Technical/Legal | withdraw consent |  marketing | 3rd party sharing | YES | {purpose preference string} | data@subject.com, consent id, principal ID, purpose preference, terminate | technical scope | to terminate consent preference | linked to preference in profile |
+| Technical/Legal | withdraw consent |  marketing | PI sharing | YES | {purpose preference string} | data@subject.com, consent id, principal ID, purpose preference, terminate | technical scope | to terminate consent preference | linked to preference in profile |
 
 # 5.4  Conformance Table
 
@@ -348,7 +347,7 @@ COMPLIANT MVCR is for specific privacy controls as defined by regulation and/or 
 | 19 | Purpose Preference (Y/N) | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 | 20 | Purpose Termination/Duration/Renewal | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
 | 21 | PI Category | MUST | MUST | MUST | MUST | MUST |
-| 22 | 3rd Party Sharing Y/N | SHOULD | MUST | MUST | MUST |
+| 22 | PI Sharing Y/N | SHOULD | MUST | MUST | MUST |
 | 23 | Third Party | SHOULD | SHOULD | SHOULD | SHOULD |
 | 24 | Scope(s) | OPTIONAL | OPTIONAL | MUST | MUST |
 
@@ -401,8 +400,8 @@ The list below contains a list of purposes for which Personally Identifiable Inf
 | 7. | Communicating with you about the services of third parties you may be interested in. | _Marketing Third Parties_ | |
 | 8. | Providing the information to third parties to deliver our services on our behalf. | _Sharing for Delivery_ | |
 | 9. | Providing the information to third parties to enable them to communicate with you about their own services you may be interested in. | _Sharing for Marketing_ | |
-| 10. | Providing the information to third parties to enable them to deliver or improve their own services to you. | _3rd Party Sharing for Core Function_ | |
-| 11. | Providing the information to third parties to enable them to deliver or improve their own services to others. | _3rd Party Sharing for ..._ | |
+| 10. | Providing the information to third parties to enable them to deliver or improve their own services to you. | _PI  Sharing for Core Function_ | |
+| 11. | Providing the information to third parties to enable them to deliver or improve their own services to others. | _PI Sharing for ..._ | |
 | 12. | Complying with our legal obligations for record keeping. | _Legally Required Data Retention_ | |
 | 13. | Complying with our legal obligations to provide the information to law enforcement or other regulatory/government bodies. | _Required by Law Enforcement or Government_ | |
 | 14. | Protecting your vital and health interests. | _Protecting Your Health_ | |
@@ -486,7 +485,9 @@ The following table sets out the fields contained in a JWT that meets the inform
 
 The reference implementation for v0.8 draft of the Consent Receipt specification is the  Kantara CISWG demo Implementation for the Work Group sign-up form. The examples in this Consent Receipt specification are taken from this implementation.  https://kantarainitiative.org/beta-signup/
 
-Kantara has a unique brand, in that it is a community of people invested in developing trusted services around identity.  Easier access to manage and withdraw consent will further reflect the trusted brand that Kantara has built.  
+Kantara has a trusted and unique brand in trusted services, in that it is a community of people invested in standards development, trust tech, policy, protocols around identity and policy.  
+
+Manage PI in membership and withdraw consent will further reflect the trusted brand that Kantara has built.  
 
 To implement the consent receipt a review was required
 
@@ -501,6 +502,13 @@ To implement a consent receipt for the Kantara CISWG (Consent & Information Shar
 Privacy Policy Review ( https://kantarainitiative.org/confluence/display/GI/Privacy+Policy)
 * Transfer of personal data to the USA can benefit from consent on the GPA form
 
+## Results 
+The GPA FORM collects consent form
+* Consent to Join WG (requires link to withdraw consent)
+* Authority to consent on behalf of organsiation (requires link to withdraw authority)
+* Consent Preference - voting or non-voting (link to policy for changing voting status)
+
 WG PI Sharing practices
-* Member data shared on WG WIKI in participation rossiter
-* All post to mailing list are captured in a public achieved
+* Share IP with Google Analytics (non-identified data) (link to policy)
+* Member data shared on WG WIKI in participation rossiter (link to participant rossiter)
+* All post to mailing list are captured in a public achieved (link to mailing list  for m)
