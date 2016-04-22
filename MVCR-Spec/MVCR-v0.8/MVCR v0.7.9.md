@@ -5,6 +5,7 @@
 | Version: | 1.0 Draft 0.7.9 |
 | Date: | April 18, 2016 |
 | Editors: | Mark Lizar |
+| | Heather Flanagan  |
 | Contributors: |
 | |	John Wunderlich |
 | |     Justin Richer   |
@@ -502,13 +503,15 @@ To implement a consent receipt for the Kantara CISWG (Consent & Information Shar
 Privacy Policy Review ( https://kantarainitiative.org/confluence/display/GI/Privacy+Policy)
 * Transfer of personal data to the USA can benefit from consent on the GPA form
 
-## Results 
-The GPA FORM collects consent form
+## Results
+consent & authority requested:
 * Consent to Join WG (requires link to withdraw consent)
 * Authority to consent on behalf of organsiation (requires link to withdraw authority)
 * Consent Preference - voting or non-voting (link to policy for changing voting status)
 
+WG PII Sharing practices
+* Member data shared on WG WIKI in participation roster (link to participant roster)
+* All post to mailing list are captured in a public achieved (link to mailing list  for m)
+
 WG PI Sharing practices
 * Share IP with Google Analytics (non-identified data) (link to policy)
-* Member data shared on WG WIKI in participation rossiter (link to participant rossiter)
-* All post to mailing list are captured in a public achieved (link to mailing list  for m)
