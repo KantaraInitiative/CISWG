@@ -17,7 +17,7 @@
 
 This specification identifies the consent requirements necessary to record consent for a personal information sharing transaction and provide this record as an independent receipt.  Much like a transaction receipt mapped the price of a product or service to payment. The receipt effectively maps and links the legal, social and contextual elements to a record of consent.
 
-As a result the consent receipt not only opens consent for people, but it also provides proof of consent and enables consistent consent practices.   The  consent receipt is required to be provisioned at point of consent to the person providing consent.  In this way, its like a reverse cookie, it enables people to track their own data and who is using it.
+As a result the consent receipt not only opens consent for people, but it also provides proof of consent and enables consistent consent practices.   The  consent receipt is required to be provisioned at point of consent to the person providing consent.  
 
 By putting the individual at the centre of consent this specification addresses FIPPs and ISO Principles - "Openness, transparency, notice") and Consent (ISO Principle 1 - "Consent and Choice")
 
