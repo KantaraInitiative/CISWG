@@ -366,11 +366,12 @@ Consent Receipt V.1 provides the
 Additional Fields Proposed 
 | Receipt Field Label | Receipt Field Format | Data Field Name | Data Type | Example Data Input | Receipt Field Description | Purpose of Field | Linked |
 | --- | --- | --- | --- | --- | --- | --- | --- | 
-| PI attributes | attributes name | attribute | {text=attribute value} | multiple PI attributes can be added to a purpose category | used to map technical scope | not linked externally | 
-| 25 | PI Attribute(s) | N/A | N/A | OPTIONAL | OPTIONAL | OPTIONAL | 
-|26 | PI Confidentiality Level | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL | 
-| 27| Sensitive Information Category | N/A | MUST NOT | MUST | MUST | | 28 | Sharing Purpose | OPTIONAL | MUST | | | | 
-| 29 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL |
+| PI attributes | attributes name | attribute | {text=attribute value} | multiple PI attributes can be added to a purpose category | used to map technical scope | not linked externally | |
+| 25 | PI Attribute(s) | N/A | N/A | OPTIONAL | OPTIONAL | OPTIONAL | |
+|26 | PI Confidentiality Level | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL | |
+| 27| Sensitive Information Category | N/A | MUST NOT | MUST | MUST | || |
+| 28 | Sharing Purpose | OPTIONAL | MUST | | | | |
+| 29 | Sharing Contract/Policy | OPTIONAL | OPTIONAL | OPTIONAL | OPTIONAL | | | 
 
 6.3 Consent Receipt v2.1 for Compliant Consent Receipts (TBF)
 
