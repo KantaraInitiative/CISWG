@@ -1,0 +1,45 @@
+User Submitted Terms - Specification for Human, Legal readable Terms
+
+USER TERMS: Human language and {{ legal language }} below.
+PREAMBLE: User submitted terms create an opportunity for individuals to share their own terms with entities about how they wish to be treated. This effort is meant to describe human, legal and machine readable versions of each possible term along with additional information for agents who might implement terms for individuals as well as for entities who might see, accept or refuse the terms.  {{ Information is defined as personal information provided by the individual about themselves. Data + Meaning = Information. The observer creates meaning (or observer is "informed by" the data), and then can be assigned duties. Information not collected from a person does not by definition constitute personal data. }}
+TERMS AGREEMENT:  {{ Information can only be shared with those parties who first agree to abide by these terms.  Any sharing of information with a party that has not first agreed to these terms is a violation of these terms. }}
+
+SHARE: describes the terms for sharing information with entities by individuals.
+Choice: 2nd
+1st-2nd Party:   My information shared and what I do will be kept between me and the entity. 
+{{Information shared by an individual (the “1st party”) and their activities are not permitted to be shared by the 2nd party with any other parties.}}
+Choice: 3rd
+3rd Party:  I will allow sharing of my information or information about what I do with 3rd parties I approve of.
+{{ Information about an individual and their activities can be shared by the 2nd party with mutually approved 3rd parties, including the public, subject to 1st Party's purpose choices, including but not limited to advertising and data brokering. }}
+ 
+DURATION: describes the terms for retaining information by entities about individuals. {{ Add language referring to laws or contracts, defining 3rd party jurisdiction, to limit this from abuse. }}
+Choice: Session
+Session:  My information shared or about what I do will only be kept for the session, unless required by law or contractual obligation.
+{{ Information about an individual must be destroyed by the 2nd party immediately after the completion of the transaction for which it was collected or otherwise generated, unless otherwise required by law or contract obligation. }} [NOTE: What about records for audit?  What about hashed storage, e.g., in blockchain or other ledger system?]
+Choice: 3
+3 months:  My information will be kept for up to 90 days after I share it or take an action, unless required by law or contractual obligation.
+{{ Information about an individual must be destroyed on or before the date that is 90 days after its collection or other generation by the 2nd party, unless otherwise required by law or contract obligation. }}
+Choice: Infinity
+Unlimited until further notice:  My information will be kept as long as I continue to choose this term, unless required by law or contractual obligation. If I change to another lesser term, my new term will be followed.
+{{ Information about an individual can be retained indefinitely by the 2nd party, unless and until the 1st party notifies the 2nd party they have made an alternate selection for duration. }}
+ 
+PURPOSE: describes the purpose for use of individual's information provided or about actions they take
+Choice: Transaction
+Transaction: My information will be used only for the purposes I share it for or implied from my actions taken on the site/app.
+{{ Information about an individual may be used only for the purpose of the transaction for which it was collected or generated. }}
+Choice: Site / App Use
+Site and App Use: My information will be used for providing and / or enhancing the site or service, but not other purposes without my permission.
+{{ Information about an individual may be used beyond the transaction for which it was collected or generated, but only with respect to the operation [or further development?] of the site or app over which such original transaction occurred and not for any other secondary uses by the 2nd party or other parties. }}
+Choice:  Partner - 3rd use
+Partner and 3rd Party use:  My information or activities may be used by 3rd parties I approve of, for purposes I approve of.
+{{ Partners: Subject to the limitations of the 1st party’s “sharing” preferences, information about an individual can be used for 3rd party  purposes. }}
+ 
+TRACKING
+Choice: Tracking
+Tracking: I will allow myself to be tracked by 3rd parties.
+{{ Tracking of individual and their activities by any 3rd parties is authorized. }}
+ 
+Choice: Do Not Track
+Do Not Track: I do not want to be tracked off the site or app by the 2nd party, or by any other parties on the site or app.
+{{ Tracking by 3rd parties is not authorized by individual. 2nd parties will not track activities by 1st party that occur on another service or site. 
+NEED to add: definition of tracking that will describe exceeding authority by an unauthorized party. }}
